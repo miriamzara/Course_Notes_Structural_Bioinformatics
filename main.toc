@@ -1,56 +1,29 @@
 \contentsline {section}{\numberline {1}SB01 -- Introduction to Structural Bioinformatics}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}What is structural bioinformatics?}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}How does structural bioinformatics differ from classical bioinformatics?}{3}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}What is the sequence--structure gap?}{3}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Why is protein structure important for understanding function?}{4}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}What is the protein folding problem?}{4}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Why was protein structure prediction historically difficult?}{4}{subsection.1.6}%
-\contentsline {subsection}{\numberline {1.7}How did AlphaFold change the field?}{5}{subsection.1.7}%
-\contentsline {subsection}{\numberline {1.8}What disciplines contribute to bioinformatics?}{5}{subsection.1.8}%
-\contentsline {subsection}{\numberline {1.9}What are the main applications of structural bioinformatics?}{5}{subsection.1.9}%
-\contentsline {subsection}{\numberline {1.10}What computational skills are important in this field?}{5}{subsection.1.10}%
-\contentsline {section}{\numberline {2}SB02 -- Chemical Bonds}{6}{section.2}%
-\contentsline {subsection}{\numberline {2.1}What is the difference between physical and chemical transformations?}{6}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Describe the structure of an atom.}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}What are orbitals and quantum numbers?}{7}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Explain the Aufbau principle.}{7}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}What is electronegativity?}{7}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Compare covalent and ionic bonds.}{7}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}What determines bond polarity?}{8}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Why are non-covalent interactions important in proteins?}{8}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}What role do hydrogen bonds play in biology?}{8}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}Why is carbon particularly suited for life?}{9}{subsection.2.10}%
-\contentsline {section}{\numberline {3}SB03 -- Amino Acids / Acid-Base Theory}{9}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Compare Arrhenius and Br{\o }nsted--Lowry theories.}{9}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}What is a conjugate acid-base pair?}{9}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Define Ka and pKa.}{10}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}What is the relationship between pKa and acid strength?}{10}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}What is the significance of pH?}{10}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Why is water amphoteric?}{11}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}What is a buffer?}{11}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}Explain the Henderson--Hasselbalch equation.}{11}{subsection.3.8}%
-\contentsline {subsection}{\numberline {3.9}How do amino acids behave at different pH values?}{11}{subsection.3.9}%
-\contentsline {subsection}{\numberline {3.10}What is the isoelectric point?}{12}{subsection.3.10}%
-\contentsline {section}{\numberline {4}SB04 -- Protein Folding}{12}{section.4}%
-\contentsline {subsection}{\numberline {4.1}What is Levinthal's paradox?}{12}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Why is protein folding not a random search?}{13}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}What stabilizes the native state?}{13}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Explain the energy funnel model.}{13}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}What are the main secondary structures?}{13}{subsection.4.5}%
-\contentsline {subsection}{\numberline {4.6}What is the hydrophobic effect?}{14}{subsection.4.6}%
-\contentsline {subsection}{\numberline {4.7}Difference between thermodynamics and kinetics of folding?}{14}{subsection.4.7}%
-\contentsline {subsection}{\numberline {4.8}What are molecular chaperones?}{14}{subsection.4.8}%
-\contentsline {subsection}{\numberline {4.9}Why do proteins misfold?}{15}{subsection.4.9}%
-\contentsline {subsection}{\numberline {4.10}How is folding related to disease?}{15}{subsection.4.10}%
-\contentsline {section}{\numberline {5}SB05 -- Structural Data}{16}{section.5}%
-\contentsline {section}{\numberline {6}SB06 -- Structural Alignments}{16}{section.6}%
-\contentsline {section}{\numberline {7}SB07 -- Structural Evolution}{16}{section.7}%
-\contentsline {section}{\numberline {8}SB08 -- Comparative Modelling}{16}{section.8}%
-\contentsline {section}{\numberline {9}SB09 -- Statistical Potentials}{16}{section.9}%
+\contentsline {section}{\numberline {2}SB02 -- Chemical Bonds}{4}{section.2}%
+\contentsline {section}{\numberline {3}SB03 -- Amino Acids / Acid-Base Theory}{5}{section.3}%
+\contentsline {section}{\numberline {4}SB04 -- Protein Folding}{6}{section.4}%
+\contentsline {paragraph}{What is the protein folding problem?}{7}{section*.11}%
+\contentsline {paragraph}{What is the typical folding timescale in biological proteins?}{7}{section*.12}%
+\contentsline {paragraph}{What is Levinthal's paradox?}{7}{section*.13}%
+\contentsline {paragraph}{What are the main secondary structures?}{7}{section*.14}%
+\contentsline {paragraph}{What are the backbone dihedral angles?}{7}{section*.15}%
+\contentsline {paragraph}{What is the Ramachandran plot?}{8}{section*.16}%
+\contentsline {paragraph}{How can we describe the folding process in terms of variations of thermodynamic variables?}{8}{section*.17}%
+\contentsline {paragraph}{What is the hydrophobic effect?}{8}{section*.18}%
+\contentsline {paragraph}{Why is protein folding not a random search?}{9}{section*.19}%
+\contentsline {paragraph}{Explain the energy funnel model view and how it differs from the ant trail view}{9}{section*.20}%
+\contentsline {paragraph}{What is the principle of minimal frustration?}{9}{section*.21}%
+\contentsline {paragraph}{What is residual frustration and why is it important?}{9}{section*.22}%
+\contentsline {paragraph}{How is misfolding related to disease?}{9}{section*.23}%
+\contentsline {section}{\numberline {5}SB05 -- Structural Data}{11}{section.5}%
+\contentsline {section}{\numberline {6}SB06 -- Structural Alignments}{12}{section.6}%
+\contentsline {section}{\numberline {7}SB07 -- Structural Evolution}{13}{section.7}%
+\contentsline {section}{\numberline {8}SB08 -- Comparative Modelling}{14}{section.8}%
+\contentsline {section}{\numberline {9}SB09 -- Statistical Potentials}{15}{section.9}%
 \contentsline {section}{\numberline {10}SB10 -- Ab Initio Methods}{16}{section.10}%
-\contentsline {section}{\numberline {11}SB11 -- Tandem Repeat Proteins}{16}{section.11}%
-\contentsline {section}{\numberline {12}SB12 -- Intrinsically Disordered Proteins}{16}{section.12}%
-\contentsline {section}{\numberline {13}SB13 -- Disorder Prediction}{16}{section.13}%
-\contentsline {section}{\numberline {14}SB14 -- Molecular Dynamics}{16}{section.14}%
-\contentsline {section}{\numberline {15}SB15 -- RING}{16}{section.15}%
-\contentsline {section}{\numberline {16}SB16 -- Embeddings and Protein Language Models}{16}{section.16}%
+\contentsline {section}{\numberline {11}SB11 -- Tandem Repeat Proteins}{17}{section.11}%
+\contentsline {section}{\numberline {12}SB12 -- Intrinsically Disordered Proteins}{18}{section.12}%
+\contentsline {section}{\numberline {13}SB13 -- Disorder Prediction}{19}{section.13}%
+\contentsline {section}{\numberline {14}SB14 -- Molecular Dynamics}{20}{section.14}%
+\contentsline {section}{\numberline {15}SB15 -- RING (Residue Interaction Networks)}{21}{section.15}%
+\contentsline {section}{\numberline {16}SB16 -- Embeddings and Protein Language Models}{22}{section.16}%

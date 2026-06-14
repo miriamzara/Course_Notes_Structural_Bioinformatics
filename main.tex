@@ -14,53 +14,6 @@
 
 \setlist{nosep}
 
-% ==========================
-% Custom environments
-% ==========================
-
-\newtcolorbox{answerbox}{
-    colback=blue!3,
-    colframe=blue!50!black,
-    title=Answer,
-    breakable
-}
-
-\newtcolorbox{followupbox}{
-    colback=green!3,
-    colframe=green!40!black,
-    title=Follow-up questions / remarks,
-    breakable
-}
-
-\newcommand{\questionblock}[1]{
-\subsection{#1}
-
-\begin{answerbox}
-
-% Write your answer here
-
-\bigskip
-
-\textbf{Key points:}
-\begin{itemize}
-    \item
-    \item
-    \item
-\end{itemize}
-
-\textbf{Exam-length answer:}
-
-\end{answerbox}
-
-\begin{followupbox}
-
-\begin{itemize}
-    \item
-\end{itemize}
-
-\end{followupbox}
-}
-
 \title{Structural Bioinformatics\\Oral Exam Preparation}
 \author{}
 \date{}
@@ -71,153 +24,38 @@
 \tableofcontents
 \newpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB01 -- Introduction to Structural Bioinformatics}
-
-\subsection*{Table of Contents}
+\section*{To do list (in order of importance)}:
 \begin{enumerate}
-\item Definition of bioinformatics
-\item Structural bioinformatics
-\item Central dogma of molecular biology
-\item Protein structure and function
-\item Structure prediction problem
-\item Sequence--structure gap
-\item Protein folding problem
-\item AlphaFold and AI-based prediction
-\item Course objectives
-\item Computational tools and applications
+\item SB08 Comparative Modelling
+\item SB10 Ab Initio Methods
+\item SB07 Evolution
+\item SB14 Molecular Dynamics
+\item SB16 Embeddings
+\item SB04 Protein Folding
+\item SB06 Structural Alignments
+\item SB05 Structural Data
+\item SB12-SB13 Disorder
+\item SB09 Statistical Potentials
+\item SB15 RING
+\item SB11 Tandem Repeats
+\item SB01-SB03 quick review
 \end{enumerate}
-
-\questionblock{What is structural bioinformatics?}
-\questionblock{How does structural bioinformatics differ from classical bioinformatics?}
-\questionblock{What is the sequence--structure gap?}
-\questionblock{Why is protein structure important for understanding function?}
-\questionblock{What is the protein folding problem?}
-\questionblock{Why was protein structure prediction historically difficult?}
-\questionblock{How did AlphaFold change the field?}
-\questionblock{What disciplines contribute to bioinformatics?}
-\questionblock{What are the main applications of structural bioinformatics?}
-\questionblock{What computational skills are important in this field?}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB02 -- Chemical Bonds}
-
-\subsection*{Table of Contents}
-\begin{enumerate}
-\item Matter and chemical transformations
-\item Atomic theory
-\item Atomic structure
-\item Electrons and orbitals
-\item Chemical bonding principles
-\item Covalent bonds
-\item Ionic interactions
-\item Electronegativity
-\item Molecular geometry
-\item Non-covalent interactions in biomolecules
-\end{enumerate}
-
-\questionblock{What is the difference between physical and chemical transformations?}
-\questionblock{Describe the structure of an atom.}
-\questionblock{What are orbitals and quantum numbers?}
-\questionblock{Explain the Aufbau principle.}
-\questionblock{What is electronegativity?}
-\questionblock{Compare covalent and ionic bonds.}
-\questionblock{What determines bond polarity?}
-\questionblock{Why are non-covalent interactions important in proteins?}
-\questionblock{What role do hydrogen bonds play in biology?}
-\questionblock{Why is carbon particularly suited for life?}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB03 -- Amino Acids / Acid-Base Theory}
-
-\subsection*{Table of Contents}
-\begin{enumerate}
-\item Arrhenius theory
-\item Br{\o}nsted--Lowry theory
-\item Acids and bases in aqueous solution
-\item Strong vs weak acids
-\item Acid dissociation constant
-\item pKa
-\item pH and pOH
-\item Water self-ionization
-\item Amino acid ionization
-\item Buffer systems
-\end{enumerate}
-
-\questionblock{Compare Arrhenius and Br{\o}nsted--Lowry theories.}
-\questionblock{What is a conjugate acid-base pair?}
-\questionblock{Define Ka and pKa.}
-\questionblock{What is the relationship between pKa and acid strength?}
-\questionblock{What is the significance of pH?}
-\questionblock{Why is water amphoteric?}
-\questionblock{What is a buffer?}
-\questionblock{Explain the Henderson--Hasselbalch equation.}
-\questionblock{How do amino acids behave at different pH values?}
-\questionblock{What is the isoelectric point?}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB04 -- Protein Folding}
-
-\subsection*{Table of Contents}
-\begin{enumerate}
-\item Protein folding problem
-\item Native and denatured states
-\item Levinthal's paradox
-\item Secondary structure
-\item Folding pathways
-\item Energy landscape
-\item Thermodynamics of folding
-\item Folding kinetics
-\item Chaperones
-\item Misfolding and aggregation
-\end{enumerate}
-
-\questionblock{What is Levinthal's paradox?}
-\questionblock{Why is protein folding not a random search?}
-\questionblock{What stabilizes the native state?}
-\questionblock{Explain the energy funnel model.}
-\questionblock{What are the main secondary structures?}
-\questionblock{What is the hydrophobic effect?}
-\questionblock{Difference between thermodynamics and kinetics of folding?}
-\questionblock{What are molecular chaperones?}
-\questionblock{Why do proteins misfold?}
-\questionblock{How is folding related to disease?}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB05 -- Structural Data}
-% Repeat the same pattern
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB06 -- Structural Alignments}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB07 -- Structural Evolution}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB08 -- Comparative Modelling}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB09 -- Statistical Potentials}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB10 -- Ab Initio Methods}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB11 -- Tandem Repeat Proteins}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB12 -- Intrinsically Disordered Proteins}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB13 -- Disorder Prediction}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB14 -- Molecular Dynamics}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB15 -- RING}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB16 -- Embeddings and Protein Language Models}
+\include{chapters/01_introduction}
+\include{chapters/02_chemical_bonds}
+\include{chapters/03_aminoacids}
+\include{chapters/04_folding}
+\include{chapters/05_structdata}
+\include{chapters/06_alignment}
+\include{chapters/07_evolution}
+\include{chapters/08_homology}
+\include{chapters/09_statpot}
+\include{chapters/10_abinitio}
+\include{chapters/11_tandem}
+\include{chapters/12_IDP}
+\include{chapters/13_disorderpred}
+\include{chapters/14_md}
+\include{chapters/15_ring}
+\include{chapters/16_embeddings}
 
 \end{document}
