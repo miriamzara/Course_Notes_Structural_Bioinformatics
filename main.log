@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.25)  14 JUN 2026 17:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.25)  14 JUN 2026 18:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -637,125 +637,131 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks43
 \inpenc@posthook=\toks44
-) (./main.toc)
+) (./main.toc [1
+
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [1
-
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2]
+ [2] [3]
 \openout2 = `chapters/01_introduction.aux'.
 
- (./chapters/01_introduction.tex) [3
+ (./chapters/01_introduction.tex) [4
 
 ]
 \openout2 = `chapters/02_chemical_bonds.aux'.
 
- (./chapters/02_chemical_bonds.tex) [4
+ (./chapters/02_chemical_bonds.tex) [5
 
 
 
 ]
 \openout2 = `chapters/03_aminoacids.aux'.
 
- (./chapters/03_aminoacids.tex) [5
+ (./chapters/03_aminoacids.tex) [6
 
 
 
 ]
 \openout2 = `chapters/04_folding.aux'.
 
- (./chapters/04_folding.tex [6
+ (./chapters/04_folding.tex [7
 
 
 
 ]
-<figures/dihedrals.png, id=265, 868.74562pt x 466.24188pt>
+<figures/dihedrals.png, id=346, 868.74562pt x 466.24188pt>
 File: figures/dihedrals.png Graphic file (type png)
 <use figures/dihedrals.png>
 Package pdftex.def Info: figures/dihedrals.png  used on input line 71.
 (pdftex.def)             Requested size: 241.84843pt x 129.79272pt.
- [7] [8 <./figures/dihedrals.png>]) [9] [10]
+ [8] [9 <./figures/dihedrals.png>]) [10] [11]
 \openout2 = `chapters/05_structdata.aux'.
 
- (./chapters/05_structdata.tex) [11
+ (./chapters/05_structdata.tex [12
 
 
 
-]
+])
 \openout2 = `chapters/06_alignment.aux'.
 
- (./chapters/06_alignment.tex) [12
+ (./chapters/06_alignment.tex) [13
 
 
 
 ]
 \openout2 = `chapters/07_evolution.aux'.
 
- (./chapters/07_evolution.tex) [13
+ (./chapters/07_evolution.tex) [14
 
 
 
 ]
 \openout2 = `chapters/08_homology.aux'.
 
- (./chapters/08_homology.tex) [14
+ (./chapters/08_homology.tex) [15
 
 
 
 ]
 \openout2 = `chapters/09_statpot.aux'.
 
- (./chapters/09_statpot.tex) [15
+ (./chapters/09_statpot.tex) [16
 
 
 
 ]
 \openout2 = `chapters/10_abinitio.aux'.
 
- (./chapters/10_abinitio.tex) [16
+ (./chapters/10_abinitio.tex [17
 
 
 
 ]
+<figures/rosetta.png, id=554, 935.99687pt x 615.29875pt>
+File: figures/rosetta.png Graphic file (type png)
+<use figures/rosetta.png>
+Package pdftex.def Info: figures/rosetta.png  used on input line 77.
+(pdftex.def)             Requested size: 145.11053pt x 95.38908pt.
+ [18 <./figures/rosetta.png>] [19{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [20] [21] [22] [23] [24]) [25]
 \openout2 = `chapters/11_tandem.aux'.
 
- (./chapters/11_tandem.tex) [17
+ (./chapters/11_tandem.tex) [26
 
 
 
 ]
 \openout2 = `chapters/12_IDP.aux'.
 
- (./chapters/12_IDP.tex) [18
+ (./chapters/12_IDP.tex) [27
 
 
 
 ]
 \openout2 = `chapters/13_disorderpred.aux'.
 
- (./chapters/13_disorderpred.tex) [19
+ (./chapters/13_disorderpred.tex) [28
 
 
 
 ]
 \openout2 = `chapters/14_md.aux'.
 
- (./chapters/14_md.tex) [20
+ (./chapters/14_md.tex) [29
 
 
 
 ]
 \openout2 = `chapters/15_ring.aux'.
 
- (./chapters/15_ring.tex) [21
+ (./chapters/15_ring.tex) [30
 
 
 
 ]
 \openout2 = `chapters/16_embeddings.aux'.
 
- (./chapters/16_embeddings.tex) [22
+ (./chapters/16_embeddings.tex) [31
 
 
 
@@ -765,21 +771,21 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1EC1887EDCDF961BDFBBCE7224D39968;3404.
+(rerunfilecheck)             Checksum: 6BC64234E1AB7E2BD543CBC7757580AD;6081.
  ) 
 Here is how much of TeX's memory you used:
- 27949 strings out of 474116
- 566056 string characters out of 5743681
- 1938187 words of memory out of 5000000
- 49352 multiletter control sequences out of 15000+600000
- 568711 words of font info for 60 fonts, out of 8000000 for 9000
+ 28049 strings out of 474116
+ 567347 string characters out of 5743681
+ 1941187 words of memory out of 5000000
+ 49385 multiletter control sequences out of 15000+600000
+ 571283 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,5n,107p,633b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on main.pdf (22 pages, 1418698 bytes).
+ 101i,6n,107p,633b,574s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbi1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb>
+Output written on main.pdf (31 pages, 1912074 bytes).
 PDF statistics:
- 758 PDF objects out of 1000 (max. 8388607)
- 677 compressed objects within 7 object streams
- 421 named destinations out of 1000 (max. 500000)
- 290 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 950 PDF objects out of 1000 (max. 8388607)
+ 847 compressed objects within 9 object streams
+ 483 named destinations out of 1000 (max. 500000)
+ 415 words of extra memory for PDF output out of 10000 (max. 10000000)
 

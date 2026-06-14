@@ -16,12 +16,14 @@
 \item Current challenges and future directions
 \end{enumerate}
 
-
+\subsection*{Possible Exam Questions:}
 \begin{enumerate}
 \item{What is CASP and why is it important?}
 \item{What does the term 'ab initio prediction' mean?}
-\item{What is the difference between template-based and template-free prediction?}
 \item{How does fragment assembly work?}
+\item{What is ROSETTA and how does it work?}
+\item{What are statistical potentials and how are they used in ROSETTA?}
+\item{When the potential energy has several solutions with comparable low energy, how does ROSETTA assign the native one and why?}
 \item{Why are ab initio methods computationally expensive?}
 \item{What role do energy functions play in structure prediction?}
 \item{How is conformational space explored in ab initio prediction?}
@@ -29,3 +31,457 @@
 \item{How did AlphaFold change the field of structure prediction?}
 \item{What challenges remain in protein structure prediction?}
 \end{enumerate}
+
+
+\paragraph{What does the term 'ab initio prediction' mean?}
+The term \emph{ab initio} (Latin for ``from the beginning'') refers to methods that predict the three-dimensional structure of a protein starting only from its amino acid sequence, without relying on experimentally determined homologous structures as templates,
+and more in general without relying on the knowledge of other protein structures in general.
+
+\paragraph{What is CASP and why is it important?}
+CASP (Critical Assessment of Structure Prediction) is a community-wide experiment that evaluates the performance of protein structure prediction algorithms. 
+The organizers distribute only the amino acid sequences of proteins whose experimental structures are not yet public. Participants submit predictions, and after a few months the results are discussed at a conference.
+CASP has been held every two years since $1994$  and today comphrises several categories in addition to structure prediction, including disorder prediction and model quality assessment.
+A particularly important subcategory of structure prediction is \textbf{free modelling or "ab initio" modelling}, where no reliable template (homologous structure) is available. 
+
+
+\paragraph{What is Rosetta and how does it work?}
+Rosetta is a template-free method that dominated the CASP competition for years, until it was surpassed by AlphaFold. 
+It is based on the idea of \textbf{fragment assembly}. Works as follows:
+\begin{enumerate}
+    \item Split the sequence in segments of $9$ residues,
+    \item Use MSA to find fragments of known structures that have similar sequence profiles,
+    \item Assemble these fragments (coming from unrelated proteins) into a complete structure,
+    \item Define a potential energy function -or \textit{scoring function}- that combines physical and statistical terms:
+            $$
+            P(structure| sequence) = P(structure) \times P(sequence | structure)
+            $$
+    \item Perform simulated annealing on this potential surface to find the global minima,
+    \item Cluster together similar conformations of low energy,
+    \item Select the broadest cluster as the native ensemble.
+\end{enumerate}
+Although Rosetta is often classified as an ab initio or de novo method, it is not a purely ab initio approach because it relies on fragment libraries and statistical information extracted from previously solved protein structures. Its main innovation is the combination of fragment assembly, Monte Carlo sampling, and knowledge-based scoring functions to efficiently explore conformational space.
+
+
+\paragraph{How does Rosetta select the native conformation when it finds several structures with similar low energy?}
+Rosetta typically generates thousands of candidate structures (called \emph{decoys}) during the fragment assembly and Monte Carlo search process. Often, many of these structures have very similar energies, making it difficult to identify the native conformation based solely on the energy score.
+After generating the decoys, Rosetta groups structurally similar models into clusters and identifies the \textbf{most populated cluster}. The representative structure of the largest low-energy cluster is often selected as the final prediction. This strategy is based on the observation that random incorrect (although low in energy) conformations are usually scattered throughout conformational space, whereas native-like structures tend to accumulate in the same region.
+In other words: \textbf{the native minimum is broader than any other minimum}
+Thus, Rosetta does not simply choose the structure with the absolute lowest energy; instead, it combines \textbf{energy ranking} with \textbf{clustering analysis}, selecting structures that are both low in energy and frequently observed during the search. This improves robustness against inaccuracies in the \textit{scoring function} and increases the probability of identifying the native fold.
+
+
+
+\paragraph{Why is the global minimum broader than any other minimum - both in the \textit{real} energy landscape and in the ROSETTA scoring function landscape?}
+\smallskip\noindent
+
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{figures/rosetta.png}
+\end{center}
+\textit{In the real energy landscape}, the native minimum is expected to be broader than other minima because the stability of the native state is dominated by long-range hydrophobic interactions. Hydrophobic residues tend to cluster in the protein core, and this
+favorable packing can be maintained even when the structure undergoes small conformational changes. As a result, many conformations that are similar to the native structure have comparable energies, creating a wide basin in the energy landscape. The native conformation corresponds
+to a sharp, deep drop in this sorrounding basin of low energy.
+\newline\smallskip\noindent
+\textit{Rosetta} uses an approximate scoring function based on statistical potentials and simplified physical models. This scoring function captures broad features such as hydrophobic burial quite well, but is less accurate in describing more specific interactions such as hydrogen bonds, electrostatic interactions, and van der Waals contacts. Consequently, the sharp energy drop associated with the exact native structure is partially obscured by noise.
+However, it is still able to reconstruct the \emph{broad region} surrounding the native state, where many low-energy conformations accumulate. Therefore, native-like structures tend to form large clusters in the rosetta conformational space, whereas incorrect folds are usually represented by isolated minima with fewer nearby low-energy conformations.
+
+
+
+\paragraph{What are the terms of ROSETTA scoring function?}
+
+\paragraph{What are the terms of the Rosetta scoring function? What is the difference between the generation step and the evaluation step?}
+
+Rosetta uses a scoring function based on Bayes' theorem to estimate the probability that a candidate structure is the correct fold for a given sequence:
+$P(\text{structure}|\text{sequence}) \propto P(\text{structure})P(\text{sequence}|\text{structure})$.
+It applies a two-step process: a \textbf{generation step} that produces candidate structures using a simplified scoring function, and an \textbf{evaluation step} that assesses these candidates with a more detailed scoring function.
+
+
+During structure generation, Rosetta requires a scoring function that is extremely fast because millions of candidate conformations must be evaluated. Therefore it uses a simplified statistical potential:
+
+\[
+P(\text{structure}|\text{sequence})
+\approx
+e^{-R_g^2}
+\prod_{i<j}
+\frac{P(r_{ij}|aa_i,aa_j)}
+     {P(r_{ij})}
+\]
+
+which contains two main terms:
+
+\begin{enumerate}
+    \item Radius of gyration term $P(\text{structure}) \sim e^{-R_g^2}$: which favors compact conformations and discriminates folded proteins from random coils. This depends on structure only, i.e. it is a prior distribution.
+    \item Pairwise distance potential: $\frac{P(r_{ij}|aa_i,aa_j)} {P(r_{ij})}$:  which measures how likely it is to observe two amino acids at distance \(r_{ij}\). This is a statistical term.
+\end{enumerate}
+
+\smallskip \noindent Importantly, the simplified model assumes independence between residue pairs and ignores environmental effects, i.e. whether the residue pair is solvent-exposed or buried.
+Once a smaller set of candidate structures has been generated, Rosetta can afford a more accurate scoring function.
+The probability of the sequence given the structure is decomposed into:
+
+\[
+P(aa_1,\ldots,aa_n|\text{structure})
+\approx
+\prod_i P(aa_i|E_i)
+\;
+\prod_{i<j}
+\frac{
+P(aa_i,aa_j|r_{ij},E_i,E_j)
+}
+{
+P(aa_i|r_{ij},E_i,E_j)
+P(aa_j|r_{ij},E_i,E_j)
+}
+\]
+
+where:
+
+\begin{itemize}
+    \item \(E_i\) represents the environment of residue \(i\), such as solvent accessibility or secondary structure;
+    \item the first product evaluates how compatible each amino acid is with its local environment;
+    \item the second product evaluates pairwise interactions while accounting for the environments of both residues.
+\end{itemize}
+
+This formulation separates (\emph{decouples}) distance effects from environmental effects, allowing Rosetta to model:
+
+\begin{itemize}
+    \item hydrophobic burial,
+    \item solvation,
+    \item residue--residue interactions,
+    \item local structural preferences,
+\end{itemize}
+
+without counting the same contribution multiple times.
+
+
+
+
+
+\newpage
+.
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Transcript}
+
+\paragraph{Rosetta}
+
+Rosetta was one of the dominant methods for protein structure prediction before AlphaFold.
+
+The main idea is that the set of protein structures observed in the PDB can be recombined to generate plausible new structures. Protein structures are built by assembling short fragments taken from known structures.
+
+\paragraph{Fragment selection}
+
+The target sequence is divided into short segments.
+
+For each segment, Rosetta searches the PDB for similar sequence fragments. Instead of using only the raw sequence, it uses \textbf{sequence profiles}, obtained from multiple sequence alignments (MSAs).
+
+A sequence profile describes the frequency of each amino acid at each position of the alignment.
+
+For each position, Rosetta selects a set of candidate fragments (typically the top 25 fragments from the PDB).
+
+\paragraph{Fragment assembly}
+
+The next problem is to find the best combination of fragments.
+
+The search space is enormous, so Rosetta uses stochastic sampling methods:
+
+\begin{itemize}
+    \item discard conformations with steric clashes;
+    \item use Monte Carlo-like sampling;
+    \item allow some unfavorable moves to escape local minima.
+\end{itemize}
+
+The idea is to explore the energy landscape and avoid becoming trapped in local minima.
+
+\section{Statistical Potentials in Rosetta}
+
+Instead of calculating physical energies exactly using molecular mechanics or molecular dynamics, Rosetta often uses \textbf{statistical potentials}, which are much faster.
+
+The goal is to estimate:
+
+\[
+P(\text{structure} \mid \text{sequence})
+\]
+
+Using Bayes' theorem:
+
+\[
+P(\text{structure} \mid \text{sequence})
+=
+\frac{P(\text{sequence} \mid \text{structure})P(\text{structure})}
+{P(\text{sequence})}
+\]
+
+Since all candidate structures correspond to the same sequence, \(P(\text{sequence})\) can be ignored:
+
+\[
+P(\text{structure} \mid \text{sequence})
+\propto
+P(\text{sequence} \mid \text{structure})P(\text{structure})
+\]
+
+\paragraph{Radius of gyration}
+
+The probability of a structure can be related to its compactness.
+
+The \textbf{radius of gyration} measures how spread out the atoms are around the center of mass. Folded proteins are generally much more compact than random coils.
+
+\paragraph{Environment-dependent amino acid preferences}
+
+Rosetta evaluates how likely it is to observe a given amino acid in a given structural environment.
+
+Examples include:
+
+\begin{itemize}
+    \item alanine in an $\alpha$-helix;
+    \item hydrophobic residues buried in the protein core;
+    \item charged residues exposed to solvent.
+\end{itemize}
+
+\paragraph{Pairwise distance potentials}
+
+Rosetta also evaluates the probability of observing two amino acids (or atoms) at a given distance.
+
+This is the basis of pairwise statistical potentials such as DFIRE or RAPDF-like potentials.
+
+A limitation is that these potentials often assume independence between residue pairs.
+
+\section{Environment-Dependent Pair Potentials}
+
+A more sophisticated potential considers not only the distance between two residues, but also their environments.
+
+For example, the interaction between two residues may differ depending on whether they are:
+
+\begin{itemize}
+    \item both buried;
+    \item both solvent-exposed;
+    \item one buried and one exposed.
+\end{itemize}
+
+\paragraph{Hydrophobic residues}
+
+Hydrophobic residues are generally favorable at short distances, particularly when buried in the protein core.
+
+At sufficiently large distances their contribution should approach zero because they no longer interact.
+
+\subsection{Oppositely charged residues}
+
+Opposite charges are generally attractive at short distances, especially when forming salt bridges.
+
+\paragraph{Same-charge residues}
+
+Same-charge residues are usually unfavorable at short distances because of electrostatic repulsion.
+
+However, in specific environments (e.g. ion-binding sites or catalytic sites), same-charge residues can occur close together.
+
+Adding environmental information allows statistical potentials to better reproduce realistic physical interactions.
+
+\section{Model Selection and Clustering}
+
+Rosetta generates a very large number of candidate structures.
+
+Native-like conformations often form large clusters in conformational space.
+
+Therefore, a useful strategy is to select structures that are:
+
+\begin{itemize}
+    \item low in energy;
+    \item members of large structural clusters.
+\end{itemize}
+
+This reflects the idea that the native state lies within a broad favorable basin of the energy landscape.
+
+\paragraph{Foldit}
+
+Foldit is a protein-folding game that allows users to manipulate protein structures manually.
+
+The software evaluates moves using force fields and scoring functions.
+
+The original idea was to combine human spatial intuition with computational energy evaluation.
+
+\paragraph{AlphaFold}
+
+\subsection{AlphaFold in CASP}
+
+AlphaFold revolutionized protein structure prediction.
+
+AlphaFold 1 appeared at CASP13 (2018) and surpassed previous methods.
+
+AlphaFold 2 produced a major breakthrough at CASP14.
+
+Many targets achieved GDT-TS values around 90.
+
+A GDT-TS score of approximately 90 indicates that most residues are predicted very close to their experimentally determined positions.
+
+\section{Covariation and Multiple Sequence Alignments}
+
+A key idea behind modern structure prediction is \textbf{coevolution}.
+
+If two residues interact in a protein structure, a mutation in one residue may require a compensatory mutation in the other residue to preserve the interaction.
+
+This creates correlated mutations in a multiple sequence alignment.
+
+Therefore, sequence information alone can reveal which residues are likely to be close in three-dimensional space.
+
+Early contact-prediction methods typically required roughly 1000 homologous sequences to obtain reliable contact maps.
+
+\paragraph{AlphaFold 1}
+
+AlphaFold 1 uses:
+
+\begin{itemize}
+    \item the target sequence;
+    \item a multiple sequence alignment.
+\end{itemize}
+
+It predicts:
+
+\begin{itemize}
+    \item residue--residue distance distributions;
+    \item torsion-angle distributions.
+\end{itemize}
+
+Rather than predicting coordinates directly, it predicts geometric constraints and then builds structures satisfying those constraints.
+
+\paragraph{AlphaFold 2}
+
+AlphaFold 2 is an \textbf{end-to-end neural network}.
+
+Inputs:
+
+\begin{itemize}
+    \item target sequence;
+    \item multiple sequence alignment;
+    \item optional structural templates.
+\end{itemize}
+
+Output:
+
+\begin{itemize}
+    \item full three-dimensional coordinates.
+\end{itemize}
+
+The most important components are:
+
+\begin{itemize}
+    \item the Evoformer;
+    \item the Structure Module.
+\end{itemize}
+
+\paragraph{The Evoformer}
+
+The Evoformer processes two main representations.
+
+\subsection{MSA Representation}
+
+Contains information extracted from the multiple sequence alignment.
+
+It captures evolutionary correlations between columns.
+
+\paragraph{Pair Representation}
+
+Contains information describing relationships between residue pairs.
+
+The Evoformer allows these two representations to exchange information.
+
+Important operations include:
+
+\begin{itemize}
+    \item attention over MSA rows and columns;
+    \item transfer of covariation information into pair representations;
+    \item triangular updates.
+\end{itemize}
+
+Triangular updates exploit geometric consistency between residue triplets and allow inference of additional residue contacts.
+
+\section{Structure Module}
+
+The Structure Module converts internal representations into atomic coordinates.
+
+Residues are represented as rigid bodies that initially occupy the same position.
+
+The network predicts:
+
+\begin{itemize}
+    \item rotations;
+    \item translations;
+    \item side-chain torsion angles.
+\end{itemize}
+
+A major innovation is \textbf{Invariant Point Attention (IPA)}.
+
+IPA allows the network to reason directly in three-dimensional space while remaining invariant to global rotations and translations.
+
+After coordinate generation, a final relaxation step can be applied to remove clashes and improve stereochemistry.
+
+\section{Confidence Measures}
+
+AlphaFold provides confidence estimates in addition to coordinates.
+
+\subsection{pLDDT}
+
+The predicted Local Distance Difference Test (pLDDT) is a per-residue confidence score.
+
+\begin{itemize}
+    \item High pLDDT: high confidence.
+    \item Low pLDDT: uncertain or potentially disordered regions.
+\end{itemize}
+
+\subsection{PAE}
+
+The Predicted Aligned Error (PAE) estimates the expected positional error between residue pairs.
+
+It is especially useful for multidomain proteins.
+
+A model may predict each domain accurately while remaining uncertain about their relative orientation.
+
+\section{Self-Distillation}
+
+AlphaFold 2 employed \textbf{self-distillation}.
+
+The procedure was:
+
+\begin{enumerate}
+    \item train an initial model on experimentally determined PDB structures;
+    \item predict structures for a large set of proteins from UniRef;
+    \item select high-confidence predictions;
+    \item add these predictions to the training set.
+\end{enumerate}
+
+This substantially improved model performance.
+
+\section{Strengths of AlphaFold}
+
+\begin{itemize}
+    \item Predicts structures directly from sequence.
+    \item Often works even without close templates.
+    \item Exploits evolutionary information from MSAs.
+    \item Produces highly accurate predictions.
+    \item Provides useful confidence estimates.
+\end{itemize}
+
+\section{Limitations of AlphaFold}
+
+\begin{itemize}
+    \item Limited handling of post-translational modifications.
+    \item Not reliable for predicting mutation effects.
+    \item Usually predicts a single dominant conformation.
+    \item Struggles with conformational changes induced by ligands, pH, ions, etc.
+    \item Limited treatment of protein complexes (partially addressed by AlphaFold-Multimer).
+    \item Does not naturally model DNA, RNA, membranes, or most ligands.
+    \item Antibody--antigen interactions remain challenging.
+    \item Performance depends on available evolutionary information and training data.
+\end{itemize}
+
+AlphaFold is not a molecular dynamics simulation and does not reproduce the physical folding pathway. It predicts the most likely final structure.
+
+\section{Main Conceptual Difference Between Rosetta and AlphaFold}
+
+Rosetta and AlphaFold represent two different paradigms.
+
+\begin{description}
+    \item[Rosetta:] Fragment assembly, Monte Carlo sampling, and statistical potentials derived from known structures.
+    \item[AlphaFold:] End-to-end deep learning using sequence information, evolutionary covariation, attention mechanisms, and geometric reasoning.
+\end{description}
+
+The transition from Rosetta to AlphaFold represents the shift from manually designed scoring functions and sampling procedures to learned representations of protein sequence, evolution, and structure.
