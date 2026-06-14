@@ -18,17 +18,42 @@
 
 \subsection*{Possible Exam Questions:}
 \begin{enumerate}
-\item{What is CASP and why is it important?}
-\item{What does the term 'ab initio prediction' mean?}
-\item{How does fragment assembly work?}
-\item{What is ROSETTA and how does it work?}
-\item{What are statistical potentials and how are they used in ROSETTA?}
-\item{When the potential energy has several solutions with comparable low energy, how does ROSETTA assign the native one and why?}
+\item{What is CASP and why is it important? \done}
+\item{What does the term 'ab initio prediction' mean? \done}
+\item{How are predicted structures evaluated in CASP? \done}
+\vspace{0.8em}
+\item{What is ROSETTA and how does it work? \done}
+\item{How is the ROSETTA scoring potential modelled? What differs between the "generation" and "evaluation" steps? \done}
+\item{When the potential energy has several solutions with comparable low energy, how does ROSETTA assign the native one and why? \done}
+\item {Why is the global minimum broader than any other minimum - both in the \textit{real} energy landscape and in the ROSETTA scoring function landscape? \done}
+\vspace{0.8em}
+\item{How did AlphaFold change the field of structure prediction?}
+% AlphaFold 1
+\item{What is the main difference between AlphaFold and traditional contact-prediction methods based on covariance analysis?}
+\item{Why does AlphaFold predict inter-residue distance distributions rather than simple residue contacts?}
+\item{What are the main inputs used by AlphaFold2, and what information is contained in a Multiple Sequence Alignment (MSA)?}
+\item{How does AlphaFold2 exploit evolutionary information contained in homologous sequences?}
+\item{What is the Evoformer, and what role does it play in AlphaFold2?}
+\item{What is the attention mechanism, and why is it particularly suitable for protein structure prediction?}
+\item{What is the purpose of the MSA representation and the pair representation in AlphaFold2?}
+\item{What is triangular self-attention, and how does it help enforce geometric consistency in protein structures?}
+\item{What is Invariant Point Attention (IPA), and why is it necessary for generating 3D coordinates?}
+\item{How does the structure module convert Evoformer representations into atomic coordinates?}
+\item{What is the recycling procedure in AlphaFold2, and why does it improve prediction accuracy?}
+\item{What training data were used to train AlphaFold2? What is self-distillation?}
+\item{What are the main outputs produced by AlphaFold2 besides the predicted structure?}
+\item{What is pLDDT, and how should it be interpreted when evaluating a prediction?}
+\item{What is the Predicted Aligned Error (PAE), and what information does it provide that pLDDT does not?}
+\item{What physical or geometric knowledge is explicitly incorporated into AlphaFold2?}
+% AlphaFold 2
+\item{Why is AlphaFold2 considered an end-to-end system?}
+\item{What are the main strengths of AlphaFold2?}
+\item{What are the main limitations of AlphaFold2? Why does it struggle with conformational variability, protein complexes, mutations, and ligand binding?}
+\item{How does AlphaFold differ from Rosetta in its approach to protein structure prediction?}
+\vspace{0.8em}
 \item{Why are ab initio methods computationally expensive?}
 \item{What role do energy functions play in structure prediction?}
 \item{How is conformational space explored in ab initio prediction?}
-\item{How are predicted structures evaluated?}
-\item{How did AlphaFold change the field of structure prediction?}
 \item{What challenges remain in protein structure prediction?}
 \end{enumerate}
 
@@ -42,6 +67,12 @@ CASP (Critical Assessment of Structure Prediction) is a community-wide experimen
 The organizers distribute only the amino acid sequences of proteins whose experimental structures are not yet public. Participants submit predictions, and after a few months the results are discussed at a conference.
 CASP has been held every two years since $1994$  and today comphrises several categories in addition to structure prediction, including disorder prediction and model quality assessment.
 A particularly important subcategory of structure prediction is \textbf{free modelling or "ab initio" modelling}, where no reliable template (homologous structure) is available. 
+
+
+\paragraph{How are predicted structures evaluated in CASP?}
+The main metric used in CASP to evaluate the accuracy of predicted structures is the Global Distance Test Total Score (GDT-TS).
+GDT-TS measures the percentage of residues in the predicted structure that are within a certain distance threshold from their corresponding residues in the experimentally determined structure. 
+The score ranges from 0 to 100, with higher scores indicating better predictions.
 
 
 \paragraph{What is Rosetta and how does it work?}
@@ -72,7 +103,6 @@ Thus, Rosetta does not simply choose the structure with the absolute lowest ener
 
 \paragraph{Why is the global minimum broader than any other minimum - both in the \textit{real} energy landscape and in the ROSETTA scoring function landscape?}
 \smallskip\noindent
-
 \begin{center}
     \includegraphics[width=0.3\textwidth]{figures/rosetta.png}
 \end{center}
@@ -85,17 +115,12 @@ However, it is still able to reconstruct the \emph{broad region} surrounding the
 
 
 
-\paragraph{What are the terms of ROSETTA scoring function?}
 
-\paragraph{What are the terms of the Rosetta scoring function? What is the difference between the generation step and the evaluation step?}
-
+\paragraph{How is ROSETTA scoring potential modelled? What differs between the "generation" and "evaluation" steps?}
 Rosetta uses a scoring function based on Bayes' theorem to estimate the probability that a candidate structure is the correct fold for a given sequence:
 $P(\text{structure}|\text{sequence}) \propto P(\text{structure})P(\text{sequence}|\text{structure})$.
 It applies a two-step process: a \textbf{generation step} that produces candidate structures using a simplified scoring function, and an \textbf{evaluation step} that assesses these candidates with a more detailed scoring function.
-
-
 During structure generation, Rosetta requires a scoring function that is extremely fast because millions of candidate conformations must be evaluated. Therefore it uses a simplified statistical potential:
-
 \[
 P(\text{structure}|\text{sequence})
 \approx
@@ -104,51 +129,14 @@ e^{-R_g^2}
 \frac{P(r_{ij}|aa_i,aa_j)}
      {P(r_{ij})}
 \]
-
 which contains two main terms:
-
 \begin{enumerate}
     \item Radius of gyration term $P(\text{structure}) \sim e^{-R_g^2}$: which favors compact conformations and discriminates folded proteins from random coils. This depends on structure only, i.e. it is a prior distribution.
     \item Pairwise distance potential: $\frac{P(r_{ij}|aa_i,aa_j)} {P(r_{ij})}$:  which measures how likely it is to observe two amino acids at distance \(r_{ij}\). This is a statistical term.
 \end{enumerate}
-
 \smallskip \noindent Importantly, the simplified model assumes independence between residue pairs and ignores environmental effects, i.e. whether the residue pair is solvent-exposed or buried.
-Once a smaller set of candidate structures has been generated, Rosetta can afford a more accurate scoring function.
-The probability of the sequence given the structure is decomposed into:
-
-\[
-P(aa_1,\ldots,aa_n|\text{structure})
-\approx
-\prod_i P(aa_i|E_i)
-\;
-\prod_{i<j}
-\frac{
-P(aa_i,aa_j|r_{ij},E_i,E_j)
-}
-{
-P(aa_i|r_{ij},E_i,E_j)
-P(aa_j|r_{ij},E_i,E_j)
-}
-\]
-
-where:
-
-\begin{itemize}
-    \item \(E_i\) represents the environment of residue \(i\), such as solvent accessibility or secondary structure;
-    \item the first product evaluates how compatible each amino acid is with its local environment;
-    \item the second product evaluates pairwise interactions while accounting for the environments of both residues.
-\end{itemize}
-
-This formulation separates (\emph{decouples}) distance effects from environmental effects, allowing Rosetta to model:
-
-\begin{itemize}
-    \item hydrophobic burial,
-    \item solvation,
-    \item residue--residue interactions,
-    \item local structural preferences,
-\end{itemize}
-
-without counting the same contribution multiple times.
+Once a smaller set of candidate structures has been generated, Rosetta can afford a more accurate scoring function which accounts for the environment:
+the potential has a different shape if the residue pair is buried in the protein core or exposed to solvent. 
 
 
 
