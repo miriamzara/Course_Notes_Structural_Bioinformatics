@@ -29,26 +29,19 @@
 \vspace{0.8em}
 \item{How did AlphaFold change the field of structure prediction?}
 % AlphaFold 1
-\item{What is the main difference between AlphaFold and traditional contact-prediction methods based on covariance analysis?}
-\item{Why does AlphaFold predict inter-residue distance distributions rather than simple residue contacts?}
-\item{What are the main inputs used by AlphaFold2, and what information is contained in a Multiple Sequence Alignment (MSA)?}
-\item{How does AlphaFold2 exploit evolutionary information contained in homologous sequences?}
-\item{What is the Evoformer, and what role does it play in AlphaFold2?}
-\item{What is the attention mechanism, and why is it particularly suitable for protein structure prediction?}
-\item{What is the purpose of the MSA representation and the pair representation in AlphaFold2?}
-\item{What is triangular self-attention, and how does it help enforce geometric consistency in protein structures?}
-\item{What is Invariant Point Attention (IPA), and why is it necessary for generating 3D coordinates?}
-\item{How does the structure module convert Evoformer representations into atomic coordinates?}
-\item{What is the recycling procedure in AlphaFold2, and why does it improve prediction accuracy?}
-\item{What training data were used to train AlphaFold2? What is self-distillation?}
-\item{What are the main outputs produced by AlphaFold2 besides the predicted structure?}
-\item{What is pLDDT, and how should it be interpreted when evaluating a prediction?}
-\item{What is the Predicted Aligned Error (PAE), and what information does it provide that pLDDT does not?}
-\item{What physical or geometric knowledge is explicitly incorporated into AlphaFold2?}
+\item{How can MSA be used to predict contact maps? \done}
+\item{What is the pipeline of AlphaFold 1, and how does it differ from AlphaFold 2? \done}
+\item{Why does AlphaFold predict inter-residue distance distributions rather than simple residue contacts?\done}
+\vspace{0.8em}
 % AlphaFold 2
-\item{Why is AlphaFold2 considered an end-to-end system?}
-\item{What are the main strengths of AlphaFold2?}
-\item{What are the main limitations of AlphaFold2? Why does it struggle with conformational variability, protein complexes, mutations, and ligand binding?}
+\item{What are the main inputs used by AlphaFold2 and what differs from AlphaFold1? \done}
+\item{What is the pipeline of AlphaFold 2? \done}
+\item{What are the main outputs produced by AlphaFold2 besides the predicted structure? \done}
+\item{What is the Evoformer, and what differs between axial and triangular attention? \done}
+\item{How does the structure module convert Evoformer representations into atomic coordinates? \done}
+\item{What training data were used to train AlphaFold2? What is self-distillation?}
+\item{What physical or geometric knowledge is explicitly incorporated into AlphaFold2?}
+\item{What are the main strengths and limitations of AlphaFold2?}
 \item{How does AlphaFold differ from Rosetta in its approach to protein structure prediction?}
 \vspace{0.8em}
 \item{Why are ab initio methods computationally expensive?}
@@ -138,6 +131,146 @@ which contains two main terms:
 Once a smaller set of candidate structures has been generated, Rosetta can afford a more accurate scoring function which accounts for the environment:
 the potential has a different shape if the residue pair is buried in the protein core or exposed to solvent. 
 
+\paragraph{What is the pipeline of AlphaFold 1, and how does it differ from AlphaFold 2?}
+AlphaFold 1 (CASP13, 2018) and AlphaFold 2 (CASP14, 2020) both use deep learning, but their pipelines are fundamentally different.
+\smallskip \noindent AlphaFold 1 first takes a Multiple Sequence Alignment (MSA) as input and uses a deep neural network to predict geometric constraints between residues, mainly residue--residue distance distributions and backbone angles. These predictions are converted into a potential function, which is then optimized using a separate structure-generation procedure based on gradient descent and energy minimization. Thus, the network does not directly output the final 3D structure; instead, it predicts constraints that are subsequently used by an optimization algorithm to build the model.
+\smallskip \noindent In contrast, AlphaFold 2 is an end-to-end architecture. Starting from the MSA and pairwise residue information, the Evoformer module iteratively refines internal representations using attention mechanisms. The Structure Module then directly generates 3D atomic coordinates through Invariant Point Attention (IPA). The predicted structure is fed back into the network through a recycling procedure, allowing multiple rounds of refinement. Therefore, AlphaFold 2 learns the entire mapping from sequence to structure within a single differentiable framework.
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{figures/alphafold1.png}
+    \includegraphics[width=0.7\textwidth]{figures/alphafold2.png}
+    \captionof{figure}{Comparison of the AlphaFold 1 (left) and AlphaFold 2 (right) pipelines.}
+\end{center}
+
+
+\paragraph{Why does AlphaFold predict inter-residue distance distributions?}
+A residue contact map contains only binary information: two residues are either considered in contact or not, typically using
+a distance threshold. While useful, this representation loses a large amount of geometric information because many different protein structures can satisfy the same set of contacts.
+AlphaFold instead predicts a probability distribution over possible distances for each pair of residues. This provides much richer structural information. Distance distributions have several advantages:
+\begin{itemize}
+    \item They specify not only whether two residues interact, but also how far apart they are likely to be.
+    \item They provide more constraints for reconstructing the 3D structure, reducing ambiguity.
+    \item They express uncertainty naturally: the network can assign probabilities to multiple possible distances.
+    \item They can be converted into smooth potentials that guide structure optimization more effectively than binary contacts.
+\end{itemize}
+These predictions are converted into a differentiable scoring function (or potential), and a separate optimization procedure is used to construct the final structure.
+The optimization starts from an initial protein conformation and iteratively modifies the atomic coordinates using gradient descent. At each step, the gradient of the scoring function with respect to the coordinates is computed, and the coordinates are adjusted in the direction that decreases the score.
+The minimization objective is not a physical energy in the traditional molecular mechanics sense. Rather, it is a learned potential derived from the network predictions. The objective function rewards structures whose geometry agrees with the predicted distance distributions and angle constraints while penalizing violations of protein stereochemistry.
+
+
+\paragraph{How can MSA be used to predict contact maps?}
+The key idea is that residues that interact in the three-dimensional structure tend to co-evolve. If a mutation occurs at one position, a compensatory mutation may occur at another position to preserve the favorable interaction. These correlated mutations can be detected by analyzing a Multiple Sequence Alignment (MSA) of homologous proteins.
+To exploit this information, one computes correlations between columns of the MSA. Pairs of positions showing strong co-variation are candidates for being in contact in the folded protein. 
+This approach was a major breakthrough in protein structure prediction because it allows structural information to be extracted directly from sequence databases, even when no experimental structure or template is available.
+
+AlphaFold did not invent the use of MSAs for contact prediction. The idea of extracting structural information from co-evolution in MSAs was already a major field of research for about a decade before AlphaFold.
+What AlphaFold did was use deep learning to exploit that information much more effectively and ultimately predict full 3D structures rather than just contacts.
+
+
+\paragraph{What are the main inputs used by AlphaFold2 and what differs from AlphaFold1?}
+AlphaFold 2 still uses MSA as a primary input, but also incorporates additional information:
+\begin{itemize}
+    \item The pair representation: is an $N \times N$ matrix in which AlphaFold stores a \textit{learned} description of the relationship between every pair of residues. It can be viewed as a rich, differentiable generalization of a contact map. Every entry is a vector. Basically, it is an embedding, like done in 
+    large language models. This matrix then goes through the transformer and is updated at every step (like the buffer in a LLM).
+    \item  When available, structural templates are also used.
+\end{itemize}
+
+
+\paragraph{What is the pipeline of AlphaFold 2?}
+The pipeline can be divided into four main stages:
+\begin{enumerate}
+    \item Database search for input generation: MSA and templates.
+    \item Construction of \textit{internal} representations: MSA representation and pair representation.
+    \item Evoformer: a large transformer-based network that processes the internal representations.
+    \item Structure Module: takes as input the internal representations and generates 3D coordinates using Invariant Point Attention (IPA).
+    \item Refinement: molecular dynamics simulation to reduce steric clashes.
+    \item Recycling: the output of the structure module is fed back into the Evoformer for multiple rounds of refinement.
+\end{enumerate}
+\begin{center}
+    \includegraphics[width=\textwidth]{figures/alphafold2.png}
+\end{center}
+
+\paragraph{What are the main outputs produced by AlphaFold2 besides the predicted structure?} These are the PAE and the pLDDT.
+The PAE is a matrix of size $N \times N$ in which the entry $(i,j)$ estimates the expected positional error of residue $i$ when the predicted structure is aligned on residue $j$. This is especially useful for multidomain proteins, where the relative orientation of domains may be uncertain even if each domain is predicted accurately.
+\includegraphics[width=0.2\textwidth]{figures/AF2_PAE.png}
+The pLDDT (predicted Local Distance Difference Test) is a per-residue confidence score that estimates the reliability of the predicted structure at each position. High pLDDT values indicate high confidence, while low values suggest uncertainty or potential disorder in that region of the protein.
+
+\paragraph{What is the Evoformer, and what differs between axial and triangular attention?}
+
+The Evoformer is the core component of AlphaFold2. It is a transformer-based architecture that takes as input the MSA representation and the pair representation and iteratively refines them. Its goal is to extract structural information from evolutionary data and encode it into \textit{a residue embedding} and  a \textit{residue-pair embeddings} that can later be converted into a three-dimensional structure by the Structure Module.
+The Evoformer alternates between two types of operations:
+\begin{enumerate}
+    \item Axial attention, which operates on the MSA representation.
+    \item Triangular attention, which operates on the pair representation.
+\end{enumerate}
+\vspace{0.8em} \noindent
+Axial attention is used to analyze the MSA. Since the MSA is a matrix whose rows are homologous sequences and whose columns are residue positions, attention can be applied along either dimension, asking for different questions:
+\begin{itemize}
+    \item Row-wise attention: for a given, single sequence, attention asks: which residue positions are most relevant to each other? This is analogous to the attention mechanism in a language model, where attention identifies which words in a sentence are most relevant to each other. 
+    \item Column-wise attention: for a given residue position, attention asks: which sequences in the MSA are most relevant to each other? Not all homologous 
+    are equally informative. Some may be very similar to the target sequence, hence redundant, while others may be too divergent, hence noisy. Column-wise attention allows the network to weigh different sequences differently, effectively learning to focus on the most informative homologs.
+\end{itemize}
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+\includegraphics[width=0.28\textwidth]{figures/triangular_attention.png}
+\end{wrapfigure}
+\vspace{0.8em}\noindent
+Triangular attention is instead applied on the \textit{pair} representation. Its purpose is to ensure that the predicted relationships between residues are compatible with a valid three-dimensional structure.
+The key idea is that residue pairs cannot be considered independently. If residues $i$, $j$, and $k$ form a triangle, then the relationships between the pairs $(i,j)$, $(i,k)$, and $(j,k)$ must be mutually consistent. For example, if residues $i$ and $k$ are predicted to be close, and residues $k$ and $j$ are also predicted to be close, then residues $i$ and $j$ cannot be arbitrarily far apart. Otherwise, the predicted distances would violate the triangle inequality and could not correspond to any real 3D structure.
+To address this problem, triangular attention treats the pair representation as a \textit{graph} in which residues are nodes and residue-pair relationships are edges. When updating a pair $(i,j)$, the model considers all triangles involving an intermediate residue $k$. In other words, the update of $(i,j)$ depends on related pairs such as $(i,k)$ and $(k,j)$.
+This allows information to propagate through residue triplets and enables the network to reason about geometric constraints. Pairwise relationships that are inconsistent with the surrounding graph can therefore be corrected and refined.
+In summary, triangular attention propagates geometric information between residue triplets, ensuring that the pair representation encodes a set of residue-residue relationships that can be embedded into a physically plausible three-dimensional structure. For this reason, it is often described as providing the network with a form of ``3D common sense''.
+
+
+
+
+\paragraph{How does the Structure Module convert Evoformer representations into atomic coordinates?}
+
+The Structure Module is the final component of AlphaFold2. Its task is to transform the abstract representations produced by the Evoformer into an explicit three-dimensional protein structure.
+\begin{center}
+\includegraphics[width=\textwidth]{figures/Af2_structuremodule.png}
+\end{center}
+The backbone is represented as a series of triangles: each residue is a triangle with the N, $C_\alpha$ and $C_\beta$ atoms as vertices. There is no enforcement that the residues
+should be connected to each other, and as initialization they are all placed in the origin ($0,0,0$) of the $3$D space.
+\smallskip \noindent
+Then these triangles go through Invariant Point Attention (IPA) together with the output of the Evoformer. This is a specialized attention mechanism that
+is able to process both pairwise relations and 3D spatial information. Each residue looks at other residues, taking into account both the learned embeddings and their current positions in 3D space. The result is a suggested movement.
+This converts the abstract representations into concrete geometric transformations, allowing the network to iteratively refine the positions of the residues in three-dimensional space.
+
+\smallskip \noindent
+IPA is "Invariant"  in the sense that it is designed to be insensitive to global rotations and translations of the entire protein. This means that if the input structure is rotated or translated, the output will be transformed in the same way, preserving the relative geometry of the residues. This property is crucial for learning meaningful structural representations.
+
+\smallskip \noindent
+After several IPA iterations, each residue has: i) A position in space, ii) An orientation (a local coordinate system). Then backbone atoms $N,\quad C_\alpha,\quad C$
+can be placed using standard protein geometry  (bond lengths and bond angles are essentially fixed).
+
+From the resulting residue frames, AlphaFold predicts backbone coordinates and side-chain conformations. The final output is a complete set of atomic coordinates describing the three-dimensional structure of the protein.
+Unlike AlphaFold1, which predicted geometric constraints and then relied on a separate optimization procedure, AlphaFold2 directly generates coordinates as part of the neural network itself. Thus, structure generation is fully integrated into the end-to-end learning process.
+
+\smallskip \noindent
+There is also a shallow ResNet which does the task of predicting the side-chain torsion angles ($\chi_1,\chi_2,\chi_3,\chi_4$, depending on the amino acid). These are the only degrees of freedom needed to place the side chain atoms, as the bond lengths and angles are fixed. 
+Finally, a relaxation step can be applied to the predicted structure. This is a short \textit{molecular dynamics simulation} that removes any steric clashes and improves the stereochemistry of the model. 
+
+
+
+
+\paragraph{What are the main strengths and limitations of AlphaFold2?}
+
+Strengths:
+\begin{itemize}
+\item AlphaFold can predict protein structures based only on amino acid sequences:  it is a very good starting point for creating testable hypotheses
+and therefore alphaFold models are routinely used as starting models for X-ray crystallography and cryo-EM
+\item If available, AlphaFold can use templates from the PDB - this is a novelty with respect to AlphaFold1
+\item AlphaFold produces confidence estimates for its predictions: confidence measure per amino acids (pLDDT) and predicted Aligned Error (PAE)
+\end{itemize}
+Limitations:
+\begin{itemize}
+\item AlphaFold does not model post-translational modifications, ligands, or cofactors. There is AlphaFill, a tool that can add ligands to AlphaFold models, but it is not part of the original AlphaFold pipeline.
+\item AlphaFold is not reliable for predicting the effects of point mutations on protein structure or function.
+\item AlphaFold (by default) predicts five models per run. However, these models are generally
+very similar. In other words, AlphaFold usually cannot predict conformational variability in a
+protein.
+\item AlphaFold only accepts the $20$ standard amino acids as input.
+\end{itemize}
 
 
 
@@ -149,191 +282,6 @@ the potential has a different shape if the residue pair is buried in the protein
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Transcript}
-
-\paragraph{Rosetta}
-
-Rosetta was one of the dominant methods for protein structure prediction before AlphaFold.
-
-The main idea is that the set of protein structures observed in the PDB can be recombined to generate plausible new structures. Protein structures are built by assembling short fragments taken from known structures.
-
-\paragraph{Fragment selection}
-
-The target sequence is divided into short segments.
-
-For each segment, Rosetta searches the PDB for similar sequence fragments. Instead of using only the raw sequence, it uses \textbf{sequence profiles}, obtained from multiple sequence alignments (MSAs).
-
-A sequence profile describes the frequency of each amino acid at each position of the alignment.
-
-For each position, Rosetta selects a set of candidate fragments (typically the top 25 fragments from the PDB).
-
-\paragraph{Fragment assembly}
-
-The next problem is to find the best combination of fragments.
-
-The search space is enormous, so Rosetta uses stochastic sampling methods:
-
-\begin{itemize}
-    \item discard conformations with steric clashes;
-    \item use Monte Carlo-like sampling;
-    \item allow some unfavorable moves to escape local minima.
-\end{itemize}
-
-The idea is to explore the energy landscape and avoid becoming trapped in local minima.
-
-\section{Statistical Potentials in Rosetta}
-
-Instead of calculating physical energies exactly using molecular mechanics or molecular dynamics, Rosetta often uses \textbf{statistical potentials}, which are much faster.
-
-The goal is to estimate:
-
-\[
-P(\text{structure} \mid \text{sequence})
-\]
-
-Using Bayes' theorem:
-
-\[
-P(\text{structure} \mid \text{sequence})
-=
-\frac{P(\text{sequence} \mid \text{structure})P(\text{structure})}
-{P(\text{sequence})}
-\]
-
-Since all candidate structures correspond to the same sequence, \(P(\text{sequence})\) can be ignored:
-
-\[
-P(\text{structure} \mid \text{sequence})
-\propto
-P(\text{sequence} \mid \text{structure})P(\text{structure})
-\]
-
-\paragraph{Radius of gyration}
-
-The probability of a structure can be related to its compactness.
-
-The \textbf{radius of gyration} measures how spread out the atoms are around the center of mass. Folded proteins are generally much more compact than random coils.
-
-\paragraph{Environment-dependent amino acid preferences}
-
-Rosetta evaluates how likely it is to observe a given amino acid in a given structural environment.
-
-Examples include:
-
-\begin{itemize}
-    \item alanine in an $\alpha$-helix;
-    \item hydrophobic residues buried in the protein core;
-    \item charged residues exposed to solvent.
-\end{itemize}
-
-\paragraph{Pairwise distance potentials}
-
-Rosetta also evaluates the probability of observing two amino acids (or atoms) at a given distance.
-
-This is the basis of pairwise statistical potentials such as DFIRE or RAPDF-like potentials.
-
-A limitation is that these potentials often assume independence between residue pairs.
-
-\section{Environment-Dependent Pair Potentials}
-
-A more sophisticated potential considers not only the distance between two residues, but also their environments.
-
-For example, the interaction between two residues may differ depending on whether they are:
-
-\begin{itemize}
-    \item both buried;
-    \item both solvent-exposed;
-    \item one buried and one exposed.
-\end{itemize}
-
-\paragraph{Hydrophobic residues}
-
-Hydrophobic residues are generally favorable at short distances, particularly when buried in the protein core.
-
-At sufficiently large distances their contribution should approach zero because they no longer interact.
-
-\subsection{Oppositely charged residues}
-
-Opposite charges are generally attractive at short distances, especially when forming salt bridges.
-
-\paragraph{Same-charge residues}
-
-Same-charge residues are usually unfavorable at short distances because of electrostatic repulsion.
-
-However, in specific environments (e.g. ion-binding sites or catalytic sites), same-charge residues can occur close together.
-
-Adding environmental information allows statistical potentials to better reproduce realistic physical interactions.
-
-\section{Model Selection and Clustering}
-
-Rosetta generates a very large number of candidate structures.
-
-Native-like conformations often form large clusters in conformational space.
-
-Therefore, a useful strategy is to select structures that are:
-
-\begin{itemize}
-    \item low in energy;
-    \item members of large structural clusters.
-\end{itemize}
-
-This reflects the idea that the native state lies within a broad favorable basin of the energy landscape.
-
-\paragraph{Foldit}
-
-Foldit is a protein-folding game that allows users to manipulate protein structures manually.
-
-The software evaluates moves using force fields and scoring functions.
-
-The original idea was to combine human spatial intuition with computational energy evaluation.
-
-\paragraph{AlphaFold}
-
-\subsection{AlphaFold in CASP}
-
-AlphaFold revolutionized protein structure prediction.
-
-AlphaFold 1 appeared at CASP13 (2018) and surpassed previous methods.
-
-AlphaFold 2 produced a major breakthrough at CASP14.
-
-Many targets achieved GDT-TS values around 90.
-
-A GDT-TS score of approximately 90 indicates that most residues are predicted very close to their experimentally determined positions.
-
-\section{Covariation and Multiple Sequence Alignments}
-
-A key idea behind modern structure prediction is \textbf{coevolution}.
-
-If two residues interact in a protein structure, a mutation in one residue may require a compensatory mutation in the other residue to preserve the interaction.
-
-This creates correlated mutations in a multiple sequence alignment.
-
-Therefore, sequence information alone can reveal which residues are likely to be close in three-dimensional space.
-
-Early contact-prediction methods typically required roughly 1000 homologous sequences to obtain reliable contact maps.
-
-\paragraph{AlphaFold 1}
-
-AlphaFold 1 uses:
-
-\begin{itemize}
-    \item the target sequence;
-    \item a multiple sequence alignment.
-\end{itemize}
-
-It predicts:
-
-\begin{itemize}
-    \item residue--residue distance distributions;
-    \item torsion-angle distributions.
-\end{itemize}
-
-Rather than predicting coordinates directly, it predicts geometric constraints and then builds structures satisfying those constraints.
-
-\paragraph{AlphaFold 2}
-
-AlphaFold 2 is an \textbf{end-to-end neural network}.
 
 Inputs:
 
