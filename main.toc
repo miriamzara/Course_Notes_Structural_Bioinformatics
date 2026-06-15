@@ -20,9 +20,9 @@
 \contentsline {section}{\numberline {7}SB07 -- Structural Evolution}{13}{section.7}%
 \contentsline {section}{\numberline {8}SB08 -- Comparative Modelling}{14}{section.8}%
 \contentsline {section}{\numberline {9}SB09 -- Statistical Potentials}{15}{section.9}%
-\contentsline {section}{\numberline {10}SB10 -- Ab Initio Methods}{16}{section.10}%
+\contentsline {section}{\numberline {10}SB10 -- Ab Initio Methods {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{16}{section.10}%
 \contentsline {paragraph}{What does the term 'ab initio prediction' mean?}{16}{section*.32}%
-\contentsline {paragraph}{What is CASP and why is it important?}{17}{section*.33}%
+\contentsline {paragraph}{What is CASP and why is it important?}{16}{section*.33}%
 \contentsline {paragraph}{How are predicted structures evaluated in CASP?}{17}{section*.34}%
 \contentsline {paragraph}{What is Rosetta and how does it work?}{17}{section*.35}%
 \contentsline {paragraph}{How does Rosetta select the native conformation when it finds several structures with similar low energy?}{17}{section*.36}%
@@ -37,20 +37,10 @@
 \contentsline {paragraph}{What is the Evoformer, and what differs between axial and triangular attention?}{20}{section*.45}%
 \contentsline {paragraph}{How does the Structure Module convert Evoformer representations into atomic coordinates?}{21}{section*.47}%
 \contentsline {paragraph}{What are the main strengths and limitations of AlphaFold2?}{22}{section*.48}%
-\contentsline {paragraph}{The Evoformer}{25}{section*.49}%
-\contentsline {subsection}{\numberline {10.1}MSA Representation}{25}{subsection.10.1}%
-\contentsline {paragraph}{Pair Representation}{25}{section*.50}%
-\contentsline {section}{\numberline {11}Structure Module}{25}{section.11}%
-\contentsline {section}{\numberline {12}Confidence Measures}{25}{section.12}%
-\contentsline {subsection}{\numberline {12.1}pLDDT}{25}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}PAE}{26}{subsection.12.2}%
-\contentsline {section}{\numberline {13}Self-Distillation}{26}{section.13}%
-\contentsline {section}{\numberline {14}Strengths of AlphaFold}{26}{section.14}%
-\contentsline {section}{\numberline {15}Limitations of AlphaFold}{26}{section.15}%
-\contentsline {section}{\numberline {16}Main Conceptual Difference Between Rosetta and AlphaFold}{26}{section.16}%
-\contentsline {section}{\numberline {17}SB11 -- Tandem Repeat Proteins}{27}{section.17}%
-\contentsline {section}{\numberline {18}SB12 -- Intrinsically Disordered Proteins}{28}{section.18}%
-\contentsline {section}{\numberline {19}SB13 -- Disorder Prediction}{29}{section.19}%
-\contentsline {section}{\numberline {20}SB14 -- Molecular Dynamics}{30}{section.20}%
-\contentsline {section}{\numberline {21}SB15 -- RING (Residue Interaction Networks)}{31}{section.21}%
-\contentsline {section}{\numberline {22}SB16 -- Embeddings and Protein Language Models}{32}{section.22}%
+\contentsline {paragraph}{How does AlphaFold differ from Rosetta in its approach to protein structure prediction?}{23}{section*.49}%
+\contentsline {section}{\numberline {11}SB11 -- Tandem Repeat Proteins}{24}{section.11}%
+\contentsline {section}{\numberline {12}SB12 -- Intrinsically Disordered Proteins}{25}{section.12}%
+\contentsline {section}{\numberline {13}SB13 -- Disorder Prediction}{26}{section.13}%
+\contentsline {section}{\numberline {14}SB14 -- Molecular Dynamics}{27}{section.14}%
+\contentsline {section}{\numberline {15}SB15 -- RING (Residue Interaction Networks)}{28}{section.15}%
+\contentsline {section}{\numberline {16}SB16 -- Embeddings and Protein Language Models}{29}{section.16}%

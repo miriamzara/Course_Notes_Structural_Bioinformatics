@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB10 -- Ab Initio Methods}
+\section{SB10 -- Ab Initio Methods \done}
 
 \subsection*{Table of Contents}
 
@@ -40,8 +40,7 @@
 \item{What is the Evoformer, and what differs between axial and triangular attention? \done}
 \item{How does the structure module convert Evoformer representations into atomic coordinates? \done}
 \item{What training data were used to train AlphaFold2? What is self-distillation?}
-\item{What physical or geometric knowledge is explicitly incorporated into AlphaFold2?}
-\item{What are the main strengths and limitations of AlphaFold2?}
+\item{What are the main strengths and limitations of AlphaFold2? \done}
 \item{How does AlphaFold differ from Rosetta in its approach to protein structure prediction?}
 \vspace{0.8em}
 \item{Why are ab initio methods computationally expensive?}
@@ -270,151 +269,13 @@ Limitations:
 very similar. In other words, AlphaFold usually cannot predict conformational variability in a
 protein.
 \item AlphaFold only accepts the $20$ standard amino acids as input.
+\item  AlphaFold is not a molecular dynamics simulation and does not reproduce the physical folding pathway. It predicts the most likely final structure.
 \end{itemize}
 
 
 
-
-\newpage
-.
-\newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Inputs:
-
-\begin{itemize}
-    \item target sequence;
-    \item multiple sequence alignment;
-    \item optional structural templates.
-\end{itemize}
-
-Output:
-
-\begin{itemize}
-    \item full three-dimensional coordinates.
-\end{itemize}
-
-The most important components are:
-
-\begin{itemize}
-    \item the Evoformer;
-    \item the Structure Module.
-\end{itemize}
-
-\paragraph{The Evoformer}
-
-The Evoformer processes two main representations.
-
-\subsection{MSA Representation}
-
-Contains information extracted from the multiple sequence alignment.
-
-It captures evolutionary correlations between columns.
-
-\paragraph{Pair Representation}
-
-Contains information describing relationships between residue pairs.
-
-The Evoformer allows these two representations to exchange information.
-
-Important operations include:
-
-\begin{itemize}
-    \item attention over MSA rows and columns;
-    \item transfer of covariation information into pair representations;
-    \item triangular updates.
-\end{itemize}
-
-Triangular updates exploit geometric consistency between residue triplets and allow inference of additional residue contacts.
-
-\section{Structure Module}
-
-The Structure Module converts internal representations into atomic coordinates.
-
-Residues are represented as rigid bodies that initially occupy the same position.
-
-The network predicts:
-
-\begin{itemize}
-    \item rotations;
-    \item translations;
-    \item side-chain torsion angles.
-\end{itemize}
-
-A major innovation is \textbf{Invariant Point Attention (IPA)}.
-
-IPA allows the network to reason directly in three-dimensional space while remaining invariant to global rotations and translations.
-
-After coordinate generation, a final relaxation step can be applied to remove clashes and improve stereochemistry.
-
-\section{Confidence Measures}
-
-AlphaFold provides confidence estimates in addition to coordinates.
-
-\subsection{pLDDT}
-
-The predicted Local Distance Difference Test (pLDDT) is a per-residue confidence score.
-
-\begin{itemize}
-    \item High pLDDT: high confidence.
-    \item Low pLDDT: uncertain or potentially disordered regions.
-\end{itemize}
-
-\subsection{PAE}
-
-The Predicted Aligned Error (PAE) estimates the expected positional error between residue pairs.
-
-It is especially useful for multidomain proteins.
-
-A model may predict each domain accurately while remaining uncertain about their relative orientation.
-
-\section{Self-Distillation}
-
-AlphaFold 2 employed \textbf{self-distillation}.
-
-The procedure was:
-
-\begin{enumerate}
-    \item train an initial model on experimentally determined PDB structures;
-    \item predict structures for a large set of proteins from UniRef;
-    \item select high-confidence predictions;
-    \item add these predictions to the training set.
-\end{enumerate}
-
-This substantially improved model performance.
-
-\section{Strengths of AlphaFold}
-
-\begin{itemize}
-    \item Predicts structures directly from sequence.
-    \item Often works even without close templates.
-    \item Exploits evolutionary information from MSAs.
-    \item Produces highly accurate predictions.
-    \item Provides useful confidence estimates.
-\end{itemize}
-
-\section{Limitations of AlphaFold}
-
-\begin{itemize}
-    \item Limited handling of post-translational modifications.
-    \item Not reliable for predicting mutation effects.
-    \item Usually predicts a single dominant conformation.
-    \item Struggles with conformational changes induced by ligands, pH, ions, etc.
-    \item Limited treatment of protein complexes (partially addressed by AlphaFold-Multimer).
-    \item Does not naturally model DNA, RNA, membranes, or most ligands.
-    \item Antibody--antigen interactions remain challenging.
-    \item Performance depends on available evolutionary information and training data.
-\end{itemize}
-
-AlphaFold is not a molecular dynamics simulation and does not reproduce the physical folding pathway. It predicts the most likely final structure.
-
-\section{Main Conceptual Difference Between Rosetta and AlphaFold}
-
+\paragraph{How does AlphaFold differ from Rosetta in its approach to protein structure prediction?}
 Rosetta and AlphaFold represent two different paradigms.
-
 \begin{description}
     \item[Rosetta:] Fragment assembly, Monte Carlo sampling, and statistical potentials derived from known structures.
     \item[AlphaFold:] End-to-end deep learning using sequence information, evolutionary covariation, attention mechanisms, and geometric reasoning.

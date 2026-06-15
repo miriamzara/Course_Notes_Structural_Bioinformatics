@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.25)  15 JUN 2026 12:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.25)  15 JUN 2026 12:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -743,7 +743,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 ]
-<figures/dihedrals.png, id=312, 868.74562pt x 466.24188pt>
+<figures/dihedrals.png, id=266, 868.74562pt x 466.24188pt>
 File: figures/dihedrals.png Graphic file (type png)
 <use figures/dihedrals.png>
 Package pdftex.def Info: figures/dihedrals.png  used on input line 71.
@@ -786,98 +786,123 @@ Package pdftex.def Info: figures/dihedrals.png  used on input line 71.
 ]
 \openout2 = `chapters/10_abinitio.aux'.
 
- (./chapters/10_abinitio.tex [16
+ (./chapters/10_abinitio.tex
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathchar' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2.
+
+[16
 
 
 
 ]
-<figures/rosetta.png, id=527, 935.99687pt x 615.29875pt>
+<figures/rosetta.png, id=481, 935.99687pt x 615.29875pt>
 File: figures/rosetta.png Graphic file (type png)
 <use figures/rosetta.png>
-Package pdftex.def Info: figures/rosetta.png  used on input line 100.
+Package pdftex.def Info: figures/rosetta.png  used on input line 99.
 (pdftex.def)             Requested size: 145.11053pt x 95.38908pt.
  [17] [18 <./figures/rosetta.png>]
-<figures/alphafold1.png, id=557, 392.46625pt x 645.41125pt>
+<figures/alphafold1.png, id=511, 392.46625pt x 645.41125pt>
 File: figures/alphafold1.png Graphic file (type png)
 <use figures/alphafold1.png>
-Package pdftex.def Info: figures/alphafold1.png  used on input line 139.
+Package pdftex.def Info: figures/alphafold1.png  used on input line 138.
 (pdftex.def)             Requested size: 96.73788pt x 159.08734pt.
-<figures/alphafold2.png, id=558, 965.6075pt x 427.5975pt>
+<figures/alphafold2.png, id=512, 965.6075pt x 427.5975pt>
 File: figures/alphafold2.png Graphic file (type png)
 <use figures/alphafold2.png>
-Package pdftex.def Info: figures/alphafold2.png  used on input line 140.
+Package pdftex.def Info: figures/alphafold2.png  used on input line 139.
 (pdftex.def)             Requested size: 338.58632pt x 149.9354pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 141.
+(caption)                particular \caption on input line 140.
 See the caption package documentation for explanation.
 
 [19{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./figures/alphafold1.png> <./figures/alphafold2.png>]
 File: figures/alphafold2.png Graphic file (type png)
 <use figures/alphafold2.png>
-Package pdftex.def Info: figures/alphafold2.png  used on input line 189.
+Package pdftex.def Info: figures/alphafold2.png  used on input line 188.
 (pdftex.def)             Requested size: 483.69687pt x 214.19621pt.
-<figures/AF2_PAE.png, id=570, 573.64313pt x 202.25563pt>
+<figures/AF2_PAE.png, id=524, 573.64313pt x 202.25563pt>
 File: figures/AF2_PAE.png Graphic file (type png)
 <use figures/AF2_PAE.png>
-Package pdftex.def Info: figures/AF2_PAE.png  used on input line 194.
+Package pdftex.def Info: figures/AF2_PAE.png  used on input line 193.
 (pdftex.def)             Requested size: 96.73788pt x 34.10524pt.
  [20 <./figures/AF2_PAE.png>]
-<figures/triangular_attention.png, id=586, 1046.40938pt x 603.25375pt>
+<figures/triangular_attention.png, id=540, 1046.40938pt x 603.25375pt>
 File: figures/triangular_attention.png Graphic file (type png)
 <use figures/triangular_attention.png>
-Package pdftex.def Info: figures/triangular_attention.png  used on input line 214.
+Package pdftex.def Info: figures/triangular_attention.png  used on input line 213.
 (pdftex.def)             Requested size: 135.43452pt x 78.07594pt.
-<figures/Af2_structuremodule.png, id=587, 1127.71312pt x 472.76625pt>
+<figures/Af2_structuremodule.png, id=541, 1127.71312pt x 472.76625pt>
 File: figures/Af2_structuremodule.png Graphic file (type png)
 <use figures/Af2_structuremodule.png>
-Package pdftex.def Info: figures/Af2_structuremodule.png  used on input line 230.
+Package pdftex.def Info: figures/Af2_structuremodule.png  used on input line 229.
 (pdftex.def)             Requested size: 483.69687pt x 202.78055pt.
  [21 <./figures/triangular_attention.png>]
-Overfull \hbox (15.08934pt too wide) in paragraph at lines 249--252
+Overfull \hbox (15.08934pt too wide) in paragraph at lines 248--251
 \T1/cmr/m/n/10.95 There is also a shal-low ResNet which does the task of pre-dict-ing the side-chain tor-sion an-gles ($\OML/cmm/m/it/10.95 ^^_[]; ^^_[]; ^^_[]; ^^_[]$\T1/cmr/m/n/10.95 ,
  []
 
-[22 <./figures/Af2_structuremodule.png>] [23] [24] [25]) [26]
+[22 <./figures/Af2_structuremodule.png>]) [23]
 \openout2 = `chapters/11_tandem.aux'.
 
- (./chapters/11_tandem.tex) [27
+ (./chapters/11_tandem.tex) [24
 
 
 
 ]
 \openout2 = `chapters/12_IDP.aux'.
 
- (./chapters/12_IDP.tex) [28
+ (./chapters/12_IDP.tex) [25
 
 
 
 ]
 \openout2 = `chapters/13_disorderpred.aux'.
 
- (./chapters/13_disorderpred.tex) [29
+ (./chapters/13_disorderpred.tex) [26
 
 
 
 ]
 \openout2 = `chapters/14_md.aux'.
 
- (./chapters/14_md.tex) [30
+ (./chapters/14_md.tex) [27
 
 
 
 ]
 \openout2 = `chapters/15_ring.aux'.
 
- (./chapters/15_ring.tex) [31
+ (./chapters/15_ring.tex) [28
 
 
 
 ]
 \openout2 = `chapters/16_embeddings.aux'.
 
- (./chapters/16_embeddings.tex) [32
+ (./chapters/16_embeddings.tex) [29
 
 
 
@@ -887,21 +912,21 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 943597937D743849DA62066A9BF73526;4846.
+(rerunfilecheck)             Checksum: 662F9320F5A73D16ACFD0610EB4F1CF5;3510.
  ) 
 Here is how much of TeX's memory you used:
- 30090 strings out of 474116
- 602695 string characters out of 5743681
+ 30063 strings out of 474116
+ 602395 string characters out of 5743681
  1943187 words of memory out of 5000000
- 51383 multiletter control sequences out of 15000+600000
+ 51374 multiletter control sequences out of 15000+600000
  575525 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,5n,107p,696b,549s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbi1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on main.pdf (32 pages, 4783097 bytes).
+Output written on main.pdf (29 pages, 4773438 bytes).
 PDF statistics:
- 959 PDF objects out of 1000 (max. 8388607)
- 843 compressed objects within 9 object streams
- 496 named destinations out of 1000 (max. 500000)
- 392 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 891 PDF objects out of 1000 (max. 8388607)
+ 779 compressed objects within 8 object streams
+ 478 named destinations out of 1000 (max. 500000)
+ 320 words of extra memory for PDF output out of 10000 (max. 10000000)
 
