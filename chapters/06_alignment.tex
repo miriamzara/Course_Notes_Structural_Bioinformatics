@@ -26,6 +26,21 @@
 \item{What information is lost when using only C$\alpha$ atoms?}
 \item{What are equivalent residues in a structural alignment?}
 \item{Why can structure be more conserved than sequence?}
+\item{\textcolor{blue}{How can you measure the quality of a structural alignment?} \done}
 \item{What are the limitations of RMSD as a similarity measure?}
 \item{When is structural comparison useful in bioinformatics?}
 \end{enumerate}
+
+
+\paragraph{How can you measure the quality of a structural alignment?}
+here exist several metrics. Most common are the RMSD (Root Mean Squared Deviation)
+and the TM-score.
+RMSD simply measures the average square distance between corresponding aligned atoms
+(typically C alpha). Lower RMSD thus indicate better alignment.
+TM-score is also based on distances, but it is designed in a way that i) it is normalised with
+respect to protein size and ii) it is less sensitive to local outliers.
+A higher TM-score indicates better alignment. Compared to RMSD, TM-score better
+captures the preservation of the overall global topology.
+\begin{center}
+\includegraphics[width=\textwidth]{figures/tmscore.png}
+\end{center}
