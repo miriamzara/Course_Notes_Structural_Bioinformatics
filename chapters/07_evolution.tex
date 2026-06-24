@@ -21,13 +21,17 @@
 \begin{enumerate}
 \item{Why is protein structure generally more conserved than sequence? \done}
 \item{\textcolor{blue}{What is the relation between sequence similarity and structural similarity in biological proteins?}\done}
-\item{What are homologous proteins? Explain the difference between paralogues and orthologues \done}
-\item{What is a protein fold?}
-\item{Explain the Rossmann fold as an example of structural conservation.}
-\item{How does evolution constrain protein structure?}
-\item{Why is structural information useful for detecting remote homology?}
+\item{What are homologous proteins? Explain the difference between paralogues and orthologues. \done}
+\item{Explain the role of sequence and structure analysis in homology detection. \textcolor{orange}{TODO}}
+\item{How does evolution constrain protein structure? \done}
+\item {Why we observe only a limited number of folds? Explain briefly the structure evolution model. \done}
+% -----------------
+\item{What is a domain and what is the basic complement of domains?}
+\item{Explain briefly how SCOP classifies protein structures.}
+\item{Explain briefly how CATH classifies protein structures.}
 \end{enumerate}
 
+\subsection{Evolution}
 
 \paragraph{Why is protein structure generally more conserved than sequence?}
 Because the three-dimensional structure of a protein is what determines its function, there is strong evolutionary pressure to maintain the structure. The sequence can tolerate more mutations as long as the overall fold and function of the protein are preserved. 
@@ -40,15 +44,54 @@ Summarising: similar sequence implies similar structure, but similar structure d
 similar sequence.
 
 \paragraph{What are homologous proteins? Explain the difference between paralogues and orthologues}
-Homologous proteins are proteins that are believed to derive from a common evolutionary ancestor \textit{gene}. Homologous proteins can be classified into two categories: orthologues and paralogues.
+Homologous proteins are proteins that are believed to derive from a common evolutionary ancestor \textit{gene}. 
+Of course, we can never be $100\%$ certain about this claim. Homology is always an \textit{inference}, based on the comparison of both sequence and structure.
+\\
+Homologous proteins are the results of \textbf{divergent evolution}: they have diverged from a common ancestor. The mechanism of divergence can be either a speciation event (orthologues) or a gene duplication event (paralogues). More in detail:
 \begin{itemize}
 \item \textbf{Orthologues} are homologous proteins found in different species that originated by a \textbf{speciation event}. Since they usually retain the same biological role, orthologues often have similar functions. For example, the same enzyme in human and mouse is typically an orthologue.
 \item \textbf{Paralogues} are homologous proteins that originated by a gene duplication event within a genome (within a single species). After duplication, the two copies start to accumulate mutations and diverge, and the two proteins may acquire different functions. Therefore, paralogues are evolutionarily related, but they are not necessarily functionally equivalent. An example is the genes that do olfactory recognition: they differentiated from a commn ancestor gene and then each specialized in recognition of different olfactory molecules.
 \end{itemize}
-The term "homologous" must not be confused with "analogous", which instead defines proteins that have similar structure (and, sometimes, also similar function) but do not derive from a common ancestor. 
+The term "homologous" must not be confused with "analogous", which instead defines proteins that have similar structure (and, sometimes, also similar function) but do not derive from a common ancestor. Analogues are the result of \textbf{convergent evolution}, which is the independent evolution of similar features from different ancestors. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/converging_diverging_evolution.png}
+\caption{Example of convergent and divergent evolution in animal species.}
+\end{figure}
 
 
 \paragraph{How does evolution constrain protein structure?}
+Evolution constrains protein structure in several ways. 
+\begin{itemize}
+\item First of all, the fold must be \textit{stable}, i.e. it must have $\Delta G < 0$ in physiological conditions, as we saw.
+\item Second, the fold must be \textit{functional}, i.e. it must be able to perform a specific biological function,
+\item Third, the protein must be able to \textit{fold} into the correct structure in a reasonable time compatible with cellular functionality (ca from $1\mu s$ up to $1$ ms), otherwise the organism would not survive.
+\end{itemize}
 
-Evolution constrains protein structure because a protein sequence is accepted only if it can fold into a \textit{stable}, functional structure in a \textit{reasonable} time.
-Evolution also favours some folds over others. This can be understood as \textbf{fold competition}: different folds can in principle act as scaffolds for similar functions, but some folds are better because they position active-site or binding residues more effectively while remaining stable and easy to fold. These folds are therefore selected and reused more often. In addition, the number of possible protein architectures is limited by the available \textbf{supersecondary structures}, such as $\beta$-hairpins, helix-turn-helix motifs, and $\beta\alpha\beta$ motifs. Since only some combinations of helices, strands, and loops are physically stable and fold efficiently, evolution repeatedly reuses a limited set of successful structural solutions.
+
+\paragraph{Why we observe only a limited number of folds? Explain briefly structure evolution model.}
+We definitely see the same folds all over the tree of life, and they are relatively few. The reason is found in evolution, but we should distinguish two layers
+\begin{itemize}
+\item First, there are the constraints we just mentioned: the fold must be stable, functional, and foldable. These constraints certainly limit the number of folds. Also, there has been an evolutionary selection of folds that are better scaffolds for active sites (fold competition).
+\item But there is a second layer, and it is related to the complete history of how proteins evolved from small peptides. At the start of life, it is believed that there was just RNA and proteins where just small cofactors that helped RNA to duplicate.
+It is believed that proteins started as small peptides. The important point is that there exists only a limited number of super-secondary structures that are able to fold autonomously and are stable (e.g. $\alpha$-hairpins and $\beta$-hairpins). These were the fundamental building blocks of the first proteins. Then proteins differentiated
+through a series of of rather complex mechanisms that acted \textit{on the genes}, which go beyond simple \textit{oligomerization} (i.e. repetition) and also include other mechanisms called \textit{fusion}, \textit{circular permutation}, etc. So the fact that some folds appear common is because they come from the same, rather limited number of ancestral building blocks. 
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.2\textwidth]{figures/supersecondary.png}
+\includegraphics[width=0.7\textwidth]{figures/evolution_model.png}
+\caption{Evolution model of protein folds.}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Structural classification systems}
+
+\paragraph{What is a \textit{domain} and what is the \textit{basic complement of domains}?}
+A domain is a subunit of a protein that can fold independently. It means that if we cut the protein at the boundary of the domain, the domain will still fold into a stable structure. A domain has its
+own hydrophobic core and has relatively little interaction with the rest of the protein, making it structurally independent. 
+With "basic complement of domains" we mean the set of all domains that are found in nature. It is believed that this set was already established at the time of the \textit{last universal common ancestor} (LUCA), and that all domains found in nature today are the same as those of the LUCA. 
+
