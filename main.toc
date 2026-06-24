@@ -21,7 +21,7 @@
 \contentsline {section}{\numberline {5}SB05 -- Structural Data}{11}{section.5}%
 \contentsline {section}{\numberline {6}SB06 -- Structural Alignments}{12}{section.6}%
 \contentsline {paragraph}{How can you measure the quality of a structural alignment?}{12}{section*.31}%
-\contentsline {section}{\numberline {7}SB07 -- Structural Evolution}{13}{section.7}%
+\contentsline {section}{\numberline {7}SB07 -- Structural Evolution {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{13}{section.7}%
 \contentsline {subsection}{\numberline {7.1}Evolution}{13}{subsection.7.1}%
 \contentsline {paragraph}{Why is protein structure generally more conserved than sequence?}{13}{section*.34}%
 \contentsline {paragraph}{What is the relation between sequence similarity and structural similarity in biological proteins?}{13}{section*.35}%
@@ -33,35 +33,36 @@
 \contentsline {paragraph}{What is domain-based structural classification?}{15}{section*.42}%
 \contentsline {paragraph}{How can two domains with different evolutionary origins end up in a single protein?}{15}{section*.43}%
 \contentsline {paragraph}{Explain briefly how SCOP classifies protein structures.}{16}{section*.44}%
-\contentsline {section}{\numberline {8}SB08 -- Comparative (Homology) Modelling {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{17}{section.8}%
-\contentsline {paragraph}{Describe the main steps involved in homology (comparative) modelling.}{17}{section*.47}%
-\contentsline {paragraph}{Why is sequence alignment the most critical step in the homology modelling pipeline?}{17}{section*.48}%
-\contentsline {paragraph}{Explain the difference between fragment-based and restraint-based raw model building.}{17}{section*.49}%
-\contentsline {paragraph}{How are side chains modelled?}{18}{section*.50}%
-\contentsline {paragraph}{How is model quality assessed?}{18}{section*.51}%
-\contentsline {paragraph}{What are the main limitations of comparative modelling?}{18}{section*.52}%
-\contentsline {section}{\numberline {9}SB09 -- Statistical Potentials}{19}{section.9}%
-\contentsline {section}{\numberline {10}SB10 -- Ab Initio Methods {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{20}{section.10}%
-\contentsline {paragraph}{What does the term 'ab initio prediction' mean?}{20}{section*.56}%
-\contentsline {paragraph}{What is CASP and why is it important?}{20}{section*.57}%
-\contentsline {paragraph}{How are predicted structures evaluated in CASP?}{21}{section*.58}%
-\contentsline {paragraph}{What is Rosetta and how does it work?}{21}{section*.59}%
-\contentsline {paragraph}{How does Rosetta select the native conformation when it finds several structures with similar low energy?}{21}{section*.60}%
-\contentsline {paragraph}{Why is the global minimum broader than any other minimum - both in the \textit {real} energy landscape and in the ROSETTA scoring function landscape?}{21}{section*.61}%
-\contentsline {paragraph}{How is ROSETTA scoring potential modelled? What differs between the "generation" and "evaluation" steps?}{22}{section*.62}%
-\contentsline {paragraph}{What is the pipeline of AlphaFold 1, and how does it differ from AlphaFold 2?}{22}{section*.63}%
-\contentsline {paragraph}{Why does AlphaFold predict inter-residue distance distributions?}{23}{section*.64}%
-\contentsline {paragraph}{How can MSA be used to predict contact maps?}{23}{section*.65}%
-\contentsline {paragraph}{What are the main inputs used by AlphaFold2 and what differs from AlphaFold1?}{24}{section*.66}%
-\contentsline {paragraph}{What is the pipeline of AlphaFold 2?}{24}{section*.67}%
-\contentsline {paragraph}{What are the main outputs produced by AlphaFold2 besides the predicted structure?}{24}{section*.68}%
-\contentsline {paragraph}{What is the Evoformer, and what differs between axial and triangular attention?}{24}{section*.69}%
-\contentsline {paragraph}{How does the Structure Module convert Evoformer representations into atomic coordinates?}{25}{section*.71}%
-\contentsline {paragraph}{What are the main strengths and limitations of AlphaFold2?}{26}{section*.72}%
-\contentsline {paragraph}{How does AlphaFold differ from Rosetta in its approach to protein structure prediction?}{27}{section*.73}%
-\contentsline {section}{\numberline {11}SB11 -- Tandem Repeat Proteins}{28}{section.11}%
-\contentsline {section}{\numberline {12}SB12 -- Intrinsically Disordered Proteins}{29}{section.12}%
-\contentsline {section}{\numberline {13}SB13 -- Disorder Prediction}{30}{section.13}%
-\contentsline {section}{\numberline {14}SB14 -- Molecular Dynamics}{31}{section.14}%
-\contentsline {section}{\numberline {15}SB15 -- RING (Residue Interaction Networks)}{32}{section.15}%
-\contentsline {section}{\numberline {16}SB16 -- Embeddings and Protein Language Models}{33}{section.16}%
+\contentsline {paragraph}{Explain briefly how CATH classifies protein structures.}{17}{section*.45}%
+\contentsline {section}{\numberline {8}SB08 -- Comparative (Homology) Modelling {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{18}{section.8}%
+\contentsline {paragraph}{Describe the main steps involved in homology (comparative) modelling.}{18}{section*.49}%
+\contentsline {paragraph}{Why is sequence alignment the most critical step in the homology modelling pipeline?}{18}{section*.50}%
+\contentsline {paragraph}{Explain the difference between fragment-based and restraint-based raw model building.}{18}{section*.51}%
+\contentsline {paragraph}{How are side chains modelled?}{19}{section*.52}%
+\contentsline {paragraph}{How is model quality assessed?}{19}{section*.53}%
+\contentsline {paragraph}{What are the main limitations of comparative modelling?}{19}{section*.54}%
+\contentsline {section}{\numberline {9}SB09 -- Statistical Potentials}{20}{section.9}%
+\contentsline {section}{\numberline {10}SB10 -- Ab Initio Methods {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{21}{section.10}%
+\contentsline {paragraph}{What does the term 'ab initio prediction' mean?}{21}{section*.58}%
+\contentsline {paragraph}{What is CASP and why is it important?}{21}{section*.59}%
+\contentsline {paragraph}{How are predicted structures evaluated in CASP?}{22}{section*.60}%
+\contentsline {paragraph}{What is Rosetta and how does it work?}{22}{section*.61}%
+\contentsline {paragraph}{How does Rosetta select the native conformation when it finds several structures with similar low energy?}{22}{section*.62}%
+\contentsline {paragraph}{Why is the global minimum broader than any other minimum - both in the \textit {real} energy landscape and in the ROSETTA scoring function landscape?}{22}{section*.63}%
+\contentsline {paragraph}{How is ROSETTA scoring potential modelled? What differs between the "generation" and "evaluation" steps?}{23}{section*.64}%
+\contentsline {paragraph}{What is the pipeline of AlphaFold 1, and how does it differ from AlphaFold 2?}{23}{section*.65}%
+\contentsline {paragraph}{Why does AlphaFold predict inter-residue distance distributions?}{24}{section*.66}%
+\contentsline {paragraph}{How can MSA be used to predict contact maps?}{24}{section*.67}%
+\contentsline {paragraph}{What are the main inputs used by AlphaFold2 and what differs from AlphaFold1?}{25}{section*.68}%
+\contentsline {paragraph}{What is the pipeline of AlphaFold 2?}{25}{section*.69}%
+\contentsline {paragraph}{What are the main outputs produced by AlphaFold2 besides the predicted structure?}{25}{section*.70}%
+\contentsline {paragraph}{What is the Evoformer, and what differs between axial and triangular attention?}{25}{section*.71}%
+\contentsline {paragraph}{How does the Structure Module convert Evoformer representations into atomic coordinates?}{26}{section*.73}%
+\contentsline {paragraph}{What are the main strengths and limitations of AlphaFold2?}{27}{section*.74}%
+\contentsline {paragraph}{How does AlphaFold differ from Rosetta in its approach to protein structure prediction?}{28}{section*.75}%
+\contentsline {section}{\numberline {11}SB11 -- Tandem Repeat Proteins}{29}{section.11}%
+\contentsline {section}{\numberline {12}SB12 -- Intrinsically Disordered Proteins}{30}{section.12}%
+\contentsline {section}{\numberline {13}SB13 -- Disorder Prediction}{31}{section.13}%
+\contentsline {section}{\numberline {14}SB14 -- Molecular Dynamics}{32}{section.14}%
+\contentsline {section}{\numberline {15}SB15 -- RING (Residue Interaction Networks)}{33}{section.15}%
+\contentsline {section}{\numberline {16}SB16 -- Embeddings and Protein Language Models}{34}{section.16}%

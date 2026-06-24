@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB07 -- Structural Evolution}
+\section{SB07 -- Structural Evolution \done}
 
 \subsection*{Table of Contents}
 
@@ -28,8 +28,8 @@
 % -----------------
 \item{What is a domain and what is the basic complement of domains? \done}
 \item{What is domain-based structural classification?  \done}
-\item{Explain briefly how SCOP classifies protein structures.}
-\item{Explain briefly how CATH classifies protein structures.}
+\item{Explain briefly how SCOP classifies protein structures. \done}
+\item{Explain briefly how CATH classifies protein structures. \done}
 \end{enumerate}
 
 \subsection{Evolution}
@@ -138,10 +138,29 @@ If they frequently need to work together, it can be advantageous to encode them 
 \]
 This increases the local concentration of the two functional parts, makes their interaction more efficient, and can improve regulation because both domains are produced at the same time and in the same amount.
 This explains why many multidomain proteins contain domains with different functions. One domain may bind DNA, another may bind ATP, another may bind a ligand, and another may interact with other proteins. These domains may have different evolutionary origins, but after fusion they become parts of the same molecular machine.
-Several evolutionary mechanisms can generate this situation. \textbf{Gene fusion} occurs when two previously separate genes become a single gene, directly producing a protein containing domains from both ancestral proteins. \textbf{Domain insertion} occurs when the sequence encoding one domain is inserted into the gene encoding another protein. The inserted domain may appear inside a loop or between two structural regions of the original protein. \textbf{Exon shuffling}, especially in eukaryotes, can also create new domain combinations, because recombination can move exons around. If an exon encodes a domain or part of a domain, this can generate a protein with a new domain architecture. Finally, \textbf{gene duplication followed by divergence} can contribute: after duplication, one copy can accumulate mutations, specialize, or fuse with another gene.
-The important conceptual point is that domains are \textbf{evolutionary modules}. Evolution does not always invent proteins from zero. More often, it reuses existing domains and recombines them in new ways. Therefore, two domains with different evolutionary origins can be found in one protein because evolution can physically combine the DNA segments that encode them. If the resulting multidomain protein folds correctly and provides a functional advantage, it can be maintained and optimized by natural selection.
 }
-
-
 \paragraph{Explain briefly how SCOP classifies protein structures.}
+SCOP provides a classification of individual structural domains of proteins, rather than a classification of the entire proteins which may include a significant number of different domains. It is entirely manually curated and represents the gold standard for classification. SCOP is a hierarchical classification, whose levels are, from top (most general) to bottom (most specific):
+\begin{enumerate}
+\item \textbf{Class}: the highest level of classification, based on the secondary structure composition and arrangement. For example, all-alpha, all-beta, alpha/beta, alpha+beta, etc.
+\item \textbf{Fold}: motifs that are structurally similar. This is the most difficult level to define. Motifs aggregated onto the same fold have the same major secondary structure, same arrangement, same topological connections. Peripheral elements
+of secondary structure and turn regions may differ;
+\item \textbf{Superfamily}: domains that, besides sharing a commonn fold, also perform a similar function. They are believed to have a common evolutionary origin, but the sequence similarity may be very low, i.e. they are believed to be remote homologues.
+\item \textbf{Family}: here proteins have either high sequence identity ($>30\%$) or very similar function and structure. They are believed to be recent homologues.
+\end{enumerate}
 
+\paragraph{Explain briefly how CATH classifies protein structures.}
+CATH is the acronym for 
+\begin{enumerate}
+    \item Class
+    \item Architecture
+    \item Topology
+    \item Homologous superfamily
+\end{enumerate}
+CATH is a semi-automatic system, in which only the Architecture level is manually assigned.
+\\[2em]
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/scop_cath.png}
+\caption{Comparison of SCOP and CATH classification systems. In both systems, going from top to bottom the classification the criteria become less structure-based and more evolutionary-based.}   
+\end{figure}
