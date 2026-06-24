@@ -26,7 +26,8 @@
 \item{How does evolution constrain protein structure? \done}
 \item {Why we observe only a limited number of folds? Explain briefly the structure evolution model. \done}
 % -----------------
-\item{What is a domain and what is the basic complement of domains?}
+\item{What is a domain and what is the basic complement of domains? \done}
+\item{What is domain-based structural classification?  \done}
 \item{Explain briefly how SCOP classifies protein structures.}
 \item{Explain briefly how CATH classifies protein structures.}
 \end{enumerate}
@@ -94,4 +95,53 @@ through a series of of rather complex mechanisms that acted \textit{on the genes
 A domain is a subunit of a protein that can fold independently. It means that if we cut the protein at the boundary of the domain, the domain will still fold into a stable structure. A domain has its
 own hydrophobic core and has relatively little interaction with the rest of the protein, making it structurally independent. 
 With "basic complement of domains" we mean the set of all domains that are found in nature. It is believed that this set was already established at the time of the \textit{last universal common ancestor} (LUCA), and that all domains found in nature today are the same as those of the LUCA. 
+
+\paragraph{What is domain-based structural classification?}
+With domain-based classification we mean classification methods that are applied on \textit{structural domains}, rather than on whole protein chains. Examples
+of such classification methods are SCOP and CATH. Classification is aimed at reconstructing the evolutionary history of proteins.
+The reason for designing a classification method based on domains is that those are believed to be the fundamental blocks in evoution. Indeed, evolution is believed
+to create new proteins by combining, duplicating, fusing, or rearranging domains. Therefore, it is often more meaningful to consider homology at the domain level rather than at the whole protein level. 
+A famous quote by  Nobel laureate François Jacob is:
+"Nature is a tinkener, not an inventor" in his famous essay "Evolution and Tinkering" (1977). This means that evolution does not create new proteins from scratch, but rather reuses existing domains and combines them in new ways.
+With this, he means that Nature does a sort of "bricolage": it does not create out of nothing, but opportunistically rearranges and recombine existing elements. This is true from the molecular level (proteins) to the organismal level.
+As another analogy, is like someone that builds a car by assembling together spare parts from different cars, or it is like a Lego game, where the same blocks can be arranged in ways that form very different final structures.
+
+
+\textcolor{blue}{
+\paragraph{How can two domains with different evolutionary origins end up in a single protein?}
+This is a question I asked to ChatGPT- and here is its answer. \\
+Two domains with different evolutionary origins can end up in the same protein because genes are not fixed, indivisible units. During evolution, pieces of DNA can be duplicated, fused, inserted, deleted, or recombined. Since many protein domains correspond to relatively compact and semi-independent structural units, these genetic rearrangements can produce proteins made of domains that originally came from different ancestral proteins.
+The most important mechanism is \textbf{gene fusion}. Suppose that, originally, there are two separate genes:
+\[
+\text{Gene A} \rightarrow \text{Protein A with Domain A}
+\]
+\[
+\text{Gene B} \rightarrow \text{Protein B with Domain B}
+\]
+A mutation or recombination event can place these two genes next to each other and remove the stop/start separation between them. The result is a new fused gene:
+\[
+\text{Gene A-B} \rightarrow \text{Protein with Domain A + Domain B}
+\]
+In this way, the new protein contains two domains that were originally present in two separate proteins.
+This is possible because domains are often \textbf{modular}. A domain can fold into a stable structure on its own, or at least semi-independently. Therefore, when two domains are joined in the same polypeptide chain, they do not necessarily prevent each other from folding correctly. They can remain as two compact structural units connected by a flexible linker:
+\[
+\boxed{\text{Domain A}} - \text{linker} - \boxed{\text{Domain B}}
+\]
+The linker gives the two domains enough freedom to fold and move relative to each other. If this fusion creates a functional advantage, natural selection can preserve it.
+For example, before fusion, two proteins may physically interact:
+\[
+\text{Protein A} + \text{Protein B} \rightarrow \text{complex}
+\]
+If they frequently need to work together, it can be advantageous to encode them in one single protein:
+\[
+\text{Protein A-B}
+\]
+This increases the local concentration of the two functional parts, makes their interaction more efficient, and can improve regulation because both domains are produced at the same time and in the same amount.
+This explains why many multidomain proteins contain domains with different functions. One domain may bind DNA, another may bind ATP, another may bind a ligand, and another may interact with other proteins. These domains may have different evolutionary origins, but after fusion they become parts of the same molecular machine.
+Several evolutionary mechanisms can generate this situation. \textbf{Gene fusion} occurs when two previously separate genes become a single gene, directly producing a protein containing domains from both ancestral proteins. \textbf{Domain insertion} occurs when the sequence encoding one domain is inserted into the gene encoding another protein. The inserted domain may appear inside a loop or between two structural regions of the original protein. \textbf{Exon shuffling}, especially in eukaryotes, can also create new domain combinations, because recombination can move exons around. If an exon encodes a domain or part of a domain, this can generate a protein with a new domain architecture. Finally, \textbf{gene duplication followed by divergence} can contribute: after duplication, one copy can accumulate mutations, specialize, or fuse with another gene.
+The important conceptual point is that domains are \textbf{evolutionary modules}. Evolution does not always invent proteins from zero. More often, it reuses existing domains and recombines them in new ways. Therefore, two domains with different evolutionary origins can be found in one protein because evolution can physically combine the DNA segments that encode them. If the resulting multidomain protein folds correctly and provides a functional advantage, it can be maintained and optimized by natural selection.
+}
+
+
+\paragraph{Explain briefly how SCOP classifies protein structures.}
 
