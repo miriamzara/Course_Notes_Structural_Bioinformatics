@@ -1,30 +1,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB14 -- Molecular Dynamics}
+\section{SB14 -- Molecular Dynamics \done}
 
-\subsection*{Table of Contents}
-
-\begin{enumerate}
-\item Protein dynamics
-\item Molecular dynamics simulations
-\item Newtonian mechanics
-\item Force fields
-\item Potential energy functions
-\item Simulation workflow
-\item Solvation and boundary conditions
-\item Conformational sampling
-\item Analysis of trajectories
-\item Strengths and limitations of MD
-\end{enumerate}
 
 \begin{enumerate}
-\item{Why is protein dynamics important for biological function?}
-\item{What is molecular dynamics (MD)?}
-\item{What is a force field?}
-\item{Which energetic terms are included in a typical force field?}
-\item{How are atomic trajectories generated in MD simulations?}
-\item{Why is explicit solvent often included in simulations?}
-\item{What is conformational sampling?}
-\item{What timescale limitations affect MD simulations?}
-\item{How can molecular dynamics help us understand protein function?}
+\item{Why study protein dynamics? \done}
+\item{What is a force field and which terms are included in a typical force field? \done}
+\item{What is typically the rate-limiting step of force field evaluation? \done}
+\item{How do you choose an appropriate timestep for an MD simulation? \done}
 \item{What are the main limitations and sources of error in MD simulations?}
+\item {What kind of information can you extract from an MD simulation? Make a specific example.}
 \end{enumerate}
+
+
+\paragraph{Why study protein dynamics? \done}
+An average structure alone is not sufficient to understand protein behaviour. Flexibility is a crucial aspect of protein function. 
+Proteins are consistantly in motion, and their conformational changes are often essential for their biological activity, such as ligand binding, allosteric regulation, and catalysis.
+Additionally, we can also use molecular dynamics simulations to better understand structure itself. For example,   1) to predict protein structure (with an ab-initio simulation, or starting from a candidate and refining it) 2) incorporate solvent effects into experimentally determined structures (those obtained with X-ray crystallography or NMR) to make them more realistic.
+
+
+\paragraph{What is a force field and which terms are included in a typical force field?}
+
+\begin{itemize}
+    \item Bonded interactions: bond stretching (harmonic - breaking not allowed), angle bending (harmonic), torsional rotation (periodic);
+    \item Non-bonded interactions: van der Waals (Lennard-Jones potential), electrostatic interactions (Coulomb's law);
+\end{itemize}
+
+\paragraph{What is typically the rate-limiting step of force field evaluation?}
+
+The rate-limiting step in force field evaluation is usually the calculation of non-bonded interactions (van der Waals and electrostatic) because they grow quadratically with the number of atoms in the system,
+while the bonded interactions grow linearly. In particular, the electrostatic interactions are the most computationally expensive, because the potential decays slowly with distance (like 1/r, while lennard-jones decays like $1/r^6$).
+
+\paragraph{What kind of information can you extract from an MD simulation? Make a specific example.}

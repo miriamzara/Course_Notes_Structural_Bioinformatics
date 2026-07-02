@@ -18,58 +18,66 @@
 \contentsline {paragraph}{What is the principle of minimal frustration?}{9}{section*.25}%
 \contentsline {paragraph}{What is residual frustration and why is it important?}{9}{section*.26}%
 \contentsline {paragraph}{How is misfolding related to disease?}{9}{section*.27}%
-\contentsline {section}{\numberline {5}SB05 -- Structural Data}{11}{section.5}%
-\contentsline {section}{\numberline {6}SB06 -- Structural Alignments}{12}{section.6}%
-\contentsline {paragraph}{What is the difference between structural alignment and structural superposition? {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{12}{section*.32}%
-\contentsline {paragraph}{What is Kabsch algorithm? {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{12}{section*.33}%
-\contentsline {paragraph}{What are the main algorithms for structural alignment? Briefly explain the logic of each.}{13}{section*.34}%
-\contentsline {paragraph}{Why did the field evolve from SSAP and DALI to TM-align?}{13}{section*.35}%
-\contentsline {paragraph}{Explain the scoring function of SSAP. {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{13}{section*.36}%
-\contentsline {paragraph}{Explain how TM-align works.}{14}{section*.37}%
-\contentsline {paragraph}{How can you measure the quality of a structural alignment? {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{14}{section*.38}%
-\contentsline {section}{\numberline {7}SB07 -- Structural Evolution {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{16}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Evolution}{16}{subsection.7.1}%
-\contentsline {paragraph}{Why is protein structure generally more conserved than sequence?}{16}{section*.41}%
-\contentsline {paragraph}{What is the relation between sequence similarity and structural similarity in biological proteins?}{16}{section*.42}%
-\contentsline {paragraph}{What are homologous proteins? Explain the difference between paralogues and orthologues}{16}{section*.43}%
-\contentsline {paragraph}{How does evolution constrain protein structure?}{17}{section*.45}%
-\contentsline {paragraph}{Why we observe only a limited number of folds? Explain briefly structure evolution model.}{17}{section*.46}%
-\contentsline {subsection}{\numberline {7.2}Structural classification systems}{18}{subsection.7.2}%
-\contentsline {paragraph}{What is a \textit {domain} and what is the \textit {basic complement of domains}?}{18}{section*.48}%
-\contentsline {paragraph}{What is domain-based structural classification?}{18}{section*.49}%
-\contentsline {paragraph}{How can two domains with different evolutionary origins end up in a single protein?}{18}{section*.50}%
-\contentsline {paragraph}{Explain briefly how SCOP classifies protein structures.}{19}{section*.51}%
-\contentsline {paragraph}{Explain briefly how CATH classifies protein structures.}{20}{section*.52}%
-\contentsline {section}{\numberline {8}SB08 -- Comparative (Homology) Modelling {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{21}{section.8}%
-\contentsline {paragraph}{Describe the main steps involved in homology (comparative) modelling.}{21}{section*.56}%
-\contentsline {paragraph}{Why is sequence alignment the most critical step in the homology modelling pipeline?}{21}{section*.57}%
-\contentsline {paragraph}{Explain the difference between fragment-based and restraint-based raw model building.}{21}{section*.58}%
-\contentsline {paragraph}{How are loops modelled?}{22}{section*.59}%
-\contentsline {paragraph}{How are side chains modelled?}{22}{section*.60}%
-\contentsline {paragraph}{How is model quality assessed?}{22}{section*.61}%
-\contentsline {paragraph}{What are the main limitations of comparative modelling?}{22}{section*.62}%
-\contentsline {section}{\numberline {9}SB09 -- Statistical Potentials}{24}{section.9}%
-\contentsline {section}{\numberline {10}SB10 -- Ab Initio Methods {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{25}{section.10}%
-\contentsline {paragraph}{What does the term 'ab initio prediction' mean?}{25}{section*.66}%
-\contentsline {paragraph}{What is CASP and why is it important?}{25}{section*.67}%
-\contentsline {paragraph}{How are predicted structures evaluated in CASP?}{26}{section*.68}%
-\contentsline {paragraph}{What is Rosetta and how does it work?}{26}{section*.69}%
-\contentsline {paragraph}{How does Rosetta select the native conformation when it finds several structures with similar low energy?}{26}{section*.70}%
-\contentsline {paragraph}{Why is the global minimum broader than any other minimum - both in the \textit {real} energy landscape and in the ROSETTA scoring function landscape?}{26}{section*.71}%
-\contentsline {paragraph}{How is ROSETTA scoring potential modelled? What differs between the "generation" and "evaluation" steps?}{27}{section*.72}%
-\contentsline {paragraph}{What is the pipeline of AlphaFold 1, and how does it differ from AlphaFold 2?}{27}{section*.73}%
-\contentsline {paragraph}{Why does AlphaFold predict inter-residue distance distributions?}{28}{section*.74}%
-\contentsline {paragraph}{How can MSA be used to predict contact maps?}{28}{section*.75}%
-\contentsline {paragraph}{What are the main inputs used by AlphaFold2 and what differs from AlphaFold1?}{29}{section*.76}%
-\contentsline {paragraph}{What is the pipeline of AlphaFold 2?}{29}{section*.77}%
-\contentsline {paragraph}{What are the main outputs produced by AlphaFold2 besides the predicted structure?}{29}{section*.78}%
-\contentsline {paragraph}{What is the Evoformer, and what differs between axial and triangular attention?}{29}{section*.79}%
-\contentsline {paragraph}{How does the Structure Module convert Evoformer representations into atomic coordinates?}{30}{section*.81}%
-\contentsline {paragraph}{What are the main strengths and limitations of AlphaFold2?}{31}{section*.82}%
-\contentsline {paragraph}{How does AlphaFold differ from Rosetta in its approach to protein structure prediction?}{32}{section*.83}%
-\contentsline {section}{\numberline {11}SB11 -- Tandem Repeat Proteins}{33}{section.11}%
-\contentsline {section}{\numberline {12}SB12 -- Intrinsically Disordered Proteins}{34}{section.12}%
-\contentsline {section}{\numberline {13}SB13 -- Disorder Prediction}{35}{section.13}%
-\contentsline {section}{\numberline {14}SB14 -- Molecular Dynamics}{36}{section.14}%
-\contentsline {section}{\numberline {15}SB15 -- RING (Residue Interaction Networks)}{37}{section.15}%
-\contentsline {section}{\numberline {16}SB16 -- Embeddings and Protein Language Models}{38}{section.16}%
+\contentsline {section}{\numberline {5}SB05 -- Structural Data {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{11}{section.5}%
+\contentsline {paragraph}{Why can't we see proteins with a simple light microscope? {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{11}{section*.30}%
+\contentsline {paragraph}{What is the difference between X-ray crystallography, NMR spectroscopy and cryo-EM?}{11}{section*.31}%
+\contentsline {paragraph}{What is the "crystallization bias"?}{11}{section*.32}%
+\contentsline {paragraph}{What are the advantages of NMR over X-ray crystallography? And what are the limitations?}{12}{section*.33}%
+\contentsline {section}{\numberline {6}SB06 -- Structural Alignments {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}(more or less)}{13}{section.6}%
+\contentsline {paragraph}{What is the difference between structural alignment and structural superposition? {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{13}{section*.36}%
+\contentsline {paragraph}{What is Kabsch algorithm? {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{13}{section*.37}%
+\contentsline {paragraph}{What are the main algorithms for structural alignment? Briefly explain the logic of each.}{13}{section*.38}%
+\contentsline {paragraph}{Why did the field evolve from SSAP and DALI to TM-align?}{14}{section*.39}%
+\contentsline {paragraph}{Explain the scoring function of SSAP. {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{14}{section*.40}%
+\contentsline {paragraph}{Explain how TM-align works. {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{15}{section*.41}%
+\contentsline {paragraph}{How can you measure the quality of a structural alignment? {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{15}{section*.42}%
+\contentsline {section}{\numberline {7}SB07 -- Structural Evolution {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{17}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Evolution}{17}{subsection.7.1}%
+\contentsline {paragraph}{Why is protein structure generally more conserved than sequence?}{17}{section*.45}%
+\contentsline {paragraph}{What is the relation between sequence similarity and structural similarity in biological proteins?}{17}{section*.46}%
+\contentsline {paragraph}{What are homologous proteins? Explain the difference between paralogues and orthologues}{17}{section*.47}%
+\contentsline {paragraph}{How does evolution constrain protein structure?}{18}{section*.49}%
+\contentsline {paragraph}{Why we observe only a limited number of folds? Explain briefly structure evolution model.}{18}{section*.50}%
+\contentsline {subsection}{\numberline {7.2}Structural classification systems}{19}{subsection.7.2}%
+\contentsline {paragraph}{What is a \textit {domain} and what is the \textit {basic complement of domains}?}{19}{section*.52}%
+\contentsline {paragraph}{What is domain-based structural classification?}{19}{section*.53}%
+\contentsline {paragraph}{How can two domains with different evolutionary origins end up in a single protein?}{19}{section*.54}%
+\contentsline {paragraph}{Explain briefly how SCOP classifies protein structures.}{20}{section*.55}%
+\contentsline {paragraph}{Explain briefly how CATH classifies protein structures.}{21}{section*.56}%
+\contentsline {section}{\numberline {8}SB08 -- Comparative (Homology) Modelling {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{22}{section.8}%
+\contentsline {paragraph}{Describe the main steps involved in homology (comparative) modelling.}{22}{section*.60}%
+\contentsline {paragraph}{Why is sequence alignment the most critical step in the homology modelling pipeline?}{22}{section*.61}%
+\contentsline {paragraph}{Explain the difference between fragment-based and restraint-based raw model building.}{22}{section*.62}%
+\contentsline {paragraph}{How are loops modelled?}{23}{section*.63}%
+\contentsline {paragraph}{How are side chains modelled?}{23}{section*.64}%
+\contentsline {paragraph}{How is model quality assessed?}{23}{section*.65}%
+\contentsline {paragraph}{What are the main limitations of comparative modelling?}{23}{section*.66}%
+\contentsline {section}{\numberline {9}SB09 -- Statistical Potentials}{25}{section.9}%
+\contentsline {section}{\numberline {10}SB10 -- Ab Initio Methods {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{26}{section.10}%
+\contentsline {paragraph}{What does the term 'ab initio prediction' mean?}{26}{section*.70}%
+\contentsline {paragraph}{What is CASP and why is it important?}{26}{section*.71}%
+\contentsline {paragraph}{How are predicted structures evaluated in CASP?}{27}{section*.72}%
+\contentsline {paragraph}{What is Rosetta and how does it work?}{27}{section*.73}%
+\contentsline {paragraph}{How does Rosetta select the native conformation when it finds several structures with similar low energy?}{27}{section*.74}%
+\contentsline {paragraph}{Why is the global minimum broader than any other minimum - both in the \textit {real} energy landscape and in the ROSETTA scoring function landscape?}{27}{section*.75}%
+\contentsline {paragraph}{How is ROSETTA scoring potential modelled? What differs between the "generation" and "evaluation" steps?}{28}{section*.76}%
+\contentsline {paragraph}{What is the pipeline of AlphaFold 1, and how does it differ from AlphaFold 2?}{28}{section*.77}%
+\contentsline {paragraph}{Why does AlphaFold predict inter-residue distance distributions?}{29}{section*.78}%
+\contentsline {paragraph}{How can MSA be used to predict contact maps?}{29}{section*.79}%
+\contentsline {paragraph}{What are the main inputs used by AlphaFold2 and what differs from AlphaFold1?}{30}{section*.80}%
+\contentsline {paragraph}{What is the pipeline of AlphaFold 2?}{30}{section*.81}%
+\contentsline {paragraph}{What are the main outputs produced by AlphaFold2 besides the predicted structure?}{30}{section*.82}%
+\contentsline {paragraph}{What is the Evoformer, and what differs between axial and triangular attention?}{30}{section*.83}%
+\contentsline {paragraph}{How does the Structure Module convert Evoformer representations into atomic coordinates?}{31}{section*.85}%
+\contentsline {paragraph}{What are the main strengths and limitations of AlphaFold2?}{32}{section*.86}%
+\contentsline {paragraph}{How does AlphaFold differ from Rosetta in its approach to protein structure prediction?}{33}{section*.87}%
+\contentsline {section}{\numberline {11}SB11 -- Tandem Repeat Proteins}{34}{section.11}%
+\contentsline {section}{\numberline {12}SB12 -- Intrinsically Disordered Proteins}{35}{section.12}%
+\contentsline {section}{\numberline {13}SB13 -- Disorder Prediction}{36}{section.13}%
+\contentsline {section}{\numberline {14}SB14 -- Molecular Dynamics {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{37}{section.14}%
+\contentsline {paragraph}{Why study protein dynamics? {\color {Green}\Large \text {$\mathsurround \z@ \mathchar "458$}}}{37}{section*.91}%
+\contentsline {paragraph}{What is a force field and which terms are included in a typical force field?}{37}{section*.92}%
+\contentsline {paragraph}{What is typically the rate-limiting step of force field evaluation?}{37}{section*.93}%
+\contentsline {paragraph}{What kind of information can you extract from an MD simulation? Make a specific example.}{37}{section*.94}%
+\contentsline {section}{\numberline {15}SB15 -- RING (Residue Interaction Networks)}{38}{section.15}%
+\contentsline {section}{\numberline {16}SB16 -- Embeddings and Protein Language Models}{39}{section.16}%

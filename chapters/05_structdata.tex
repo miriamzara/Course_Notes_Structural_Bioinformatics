@@ -1,4 +1,4 @@
-\section{SB05 -- Structural Data}
+\section{SB05 -- Structural Data \done}
 
 \subsection*{Table of Contents}
 
@@ -8,32 +8,59 @@
 \item Nuclear Magnetic Resonance (NMR)
 \item Cryo-Electron Microscopy (Cryo-EM)
 \item Protein Data Bank (PDB)
-\item PDB file formats and annotations
-\item Structure quality and resolution
-\item Biological assemblies and complexes
-\item Structural databases and resources
-\item Applications of structural data
 \end{enumerate}
 
 
 \subsection*{Possible questions:}
 \begin{enumerate}
-\item{What is the Protein Data Bank (PDB)?}
-\item{Which information is contained in a PDB structure file?}
-\item{What experimental techniques are used to determine protein structures?}
-\item{What is the difference between X-ray crystallography, NMR spectroscopy and cryo-EM?}
-\item{What is meant by resolution in structural biology?}
+\item{Why can't we see proteins with a simple light microscope? \done}
+\item{What is the difference between X-ray crystallography, NMR spectroscopy and cryo-EM? \done}
+
+\vspace*{0.5cm}
 \item{What is a biological assembly and how does it differ from the asymmetric unit?}
 \item{What are "missing residues" in a PDB structure and why do they occur?}
-\item{Why is structural annotation important?}
-\item{What are PDB-derived databases and why are they useful?}
-\item{How can structural data contribute to drug discovery and protein engineering?}
-\item{What are the main limitations and biases of currently available structural datasets?}
-\item{How has the growth of the PDB enabled the development of comparative modelling and AlphaFold?}
-\item{Why is structure determination still important despite highly accurate structure prediction methods?}
-\item{How are experimental structures used to derive statistical potentials and train machine learning models?}
 \end{enumerate}
 
+\paragraph{Why can't we see proteins with a simple light microscope? \done}
+Because of the diffraction limit. Visible light has a wavelength of 400-700 nm, while proteins are typically 1-10 nm in size. A conventional light microscope can distinguish two points only if they are separated by a distance greater than:
+$$
+d = \frac{\lambda}{2NA}
+$$
+where $\lambda$ is the wavelength of light and $NA$ is the numerical aperture of the lens. Even with a very good lens, the practical resolution limit of a light microscope is about $200\,nm$. This means: if two objects are closer than about 200 nm, their scattered light waves overlap too much, and the microscope sees them as one blurred object.
+So we cannot use light microscopy, but we can still use light. Just we need lightwaves of smaller wavelength: X-rays ($\sim 0.1\,nm$). This is what X-ray crystallography does.
+
+
+\paragraph{What is the difference between X-ray crystallography, NMR spectroscopy and cryo-EM?}
+
+\begin{itemize}
+    \item \textbf{X-ray crystallography}: first one needs to grow a crystal of the protein, that is, a regular lattice of protein molecules. Then one shines X-rays on the crystal and analyzes the diffraction pattern that is produced by the X rays being scattered by the electron clouds. Using Fourier transforms, 
+    it is possible to map the distances between diffraction peaks to the electron density map. 
+    \item \textbf{NMR spectroscopy}: stands for Nuclear Magnetic Resonance. One needs to put the protein in a strong magnetic field and then shine radio waves on it. The nuclei of the atoms in the protein will absorb and re-emit the radio waves at characteristic frequencies, depending on their chemical environment. By analyzing these frequencies, one can determine the distances between atoms. 
+    \item \textbf{Cryo-EM}: means cryogenic electron microscopy. A purified biomolecule is rapidly frozen in a thin layer of vitreous ice, then imaged with an electron microscope. Many noisy 2D images of individual particles are computationally combined to reconstruct a 3D density map.
+        It is especially useful for large protein complexes and membrane proteins. It is the newest technique and it was awarded the 2017 Nobel Prize in Chemistry. 
+\end{itemize}
+
+\paragraph{What is the "crystallization bias"?}
+This expression indicates the fact that the structures we obtain with X-ray crystallography are biased toward proteins that can survive purification and crystallization.
+Not all proteins can be crystallized. First, the protein must be extracted, purified. Each of these steps selects for a particular kind of protein.
+During cell homogenization, cells are broken open. This releases many cellular components, including \textbf{proteases}, enzymes that degrade proteins. Folded, compact proteins are usually more resistant to proteases because many peptide bonds are buried inside the structure. 
+By contrast, unfolded or flexible regions are more exposed and are more easily digested. So, already at this stage, we are selecting for proteins that are folded and compact.
+Then there is another bias: to perform X-ray crystallography, the protein must form a regular crystal. This requires many identical protein molecules to pack into an ordered lattice. Proteins that are very flexible, unstable, heterogeneous, partially unfolded, or intrinsically disordered usually do not crystallize well.
+Finally, regulatory proteins are often present in \textbf{few copies} and their activity is difficult to assay. This means they can be harder to purify in sufficient quantity for growing a crystal. So early structural databases were enriched in proteins that were easier to purify and crystallize, not necessarily in all biologically important proteins.
+
+
+\paragraph{What are the advantages of NMR over X-ray crystallography? And what are the limitations?}
+
+The biggest advantage of NMR is that it studies proteins in solution, not in a crystal. This can be closer to the physiological state of the protein.
+Also, it provides an alternative for when the protein does not crystallize well or when crystallization would remove the biologically relevant behavior. 
+
+A protein with intrinsically disordered regions is often better studied by NMR both because X-ray crystallography may fail to crystallize it, or the disordered parts may be invisible in the electron density, and because X-ray produces a single static structure, while NMR can provide information about the flexibility and dynamics of the protein in solution.
+
+The major limitation of NMR is protein size. As proteins become larger, the spectra become more complex and harder to interpret. Another limitation is that the protein must be soluble and stable at relatively high concentration. If the protein aggregates or precipitates, NMR becomes difficult.
+
+NMR does not directly produce a unique three-dimensional structure. It produces experimental restraints, mainly distances between nearby nuclei. Structure-calculation algorithms then generate an ensemble of conformations compatible with these restraints. Therefore an NMR structure should be interpreted as a family of models supported by the data, not as a single exact structure. 
+When we see an NMR structure in the PDB, it is usually represented as a set of 10-20 models, each of which satisfies the experimental restraints. The variability among these models reflects \textbf{at the same time} the uncertainty in the structure determination and the flexibility of the protein in solution. So you can't really tell which of the models are real physical conformations assumed by the protein, 
+and which are just artifacts of the structure calculation. Maybe not a single model is a "real" conformation.
 
 \newpage
 

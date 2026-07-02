@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SB06 -- Structural Alignments}
+\section{SB06 -- Structural Alignments \done (more or less)}
 
 \subsection*{Table of Contents}
 
@@ -26,12 +26,9 @@
 \item{What are the main algorithms for structural alignment? Briefly explain the logic of each.}
 \item {Why did the field evolve from SSAP and DALI to TM-align?}
 \item{Explain the scoring function of SSAP. \done}
-\item {Explain how TM-align works.}
-\item{How can you measure the quality of a structural alignment? \done}
+\item {Explain how TM-align works. \done}
+\vspace*{0.5cm}
 \item{Why are structural alignments more difficult than sequence alignments?}
-\item{What information is lost when using only C$\alpha$ atoms?}
-\item{What are equivalent residues in a structural alignment?}
-\item{Why can structure be more conserved than sequence?}
 \item{\textcolor{blue}{How can you measure the quality of a structural alignment?} \done}
 \item{When is structural comparison useful in bioinformatics?}
 \end{enumerate}
@@ -120,7 +117,7 @@ of closely related sequences. This is done with the Dayoff matrices.}
 
 
 %%%%%%%%%%%%%%%%%%
-\paragraph{Explain how TM-align works.}
+\paragraph{Explain how TM-align works. \done}
 TM-align is an iterative algorithm that alternates between two steps: finding the best alignment given a ""superposition"", and finding the best ""superposition"" given an alignment. It goes on until both become stable. I wrote
 superposition in quotes because it is not exactly a superposition, since the two proteins are different, but rotation and translation just as done in superposition.
 
