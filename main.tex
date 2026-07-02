@@ -75,6 +75,39 @@ Open questions, quite broad.
     \item What happens if a protein misfolds? What are chaperones and what do they do?
 \end{enumerate}
 
+\section*{Course Recap - last lecture}
+List of topics professor considers most important:
+\vspace*{0.5em}
+\begin{itemize}
+    \item Knowing the difference between structural alignment and structural superposition
+    \item Knowing how the Kabsch algorithm works for structural superposition
+    \item Knowing what is a contact map and how to recognize alpha helices and beta sheets from it
+    \item Remembering that we saw four different algorithms for structural alignment, and that they use different strategies and they may complement each other.
+    \item Remembering the sequence-structure relationship: proteins can have similar structure but very low sequence identity. But viceversa, there is a threshold in sequence identity upon which
+    we can be sure that the structures are similar. This threshold is 30\% sequence identity, which is not so high! That's why you can successfully do homology modelling. You dont need to have a very high sequence identity to be able to model a protein structure from a template.
+    \item Knowing that we reconstruct the tree of life using protein sequence databases. Mutations are a "biological clock" that we can use to understand how long ago two animal species diverged from a common ancestor. The more similar the sequences we see in them today, the more recently they diverged. 
+    \item Knowing that we infer homology \textbf{from sequence similarity}.
+    \item We talked about understanding what is the "complement of folds" in nature, and how much the complement is shared across species. 
+    \item the hypotesis of the universal common ancestor, and how this hypotesis is supported by structural data (complex proteins could result from the combination of simpler elements, and these simpler elements are shared across species)
+    \item That the way we sytematically reason about complexity of protein structure across species is through \textbf{domain} classification.
+    \item That domain are autonomous folding units, and that there is evidence that they evolved independently.
+    \item Homologous and analogous are distinguished by looking at the sequence identity: if high, then homologous, if low, then analogous.
+    \item SCOP and CATH are two different classification systems for protein domains.
+    \item That homology modelling exploits the fact that upon $30\%$ sequence identity, we can be sure that the structures are similar. 
+    \item That the scoring function of CASP is GDT (=Global Distance Test), which is a measure of how many residues are within a certain distance threshold from the native structure.
+    \item The smart idea of Rosetta is that while for sure not every protein sequence is represented in the PDB, if we only consider short fragments ($9$ residues), then we can be sure that every possible fragment is represented in the PDB, and in many conformations.
+    \item that rosetta uses discriminarory functions (statistical potentials) and simulated annealing.
+\end{itemize}
+\vspace*{0.5em}
+That above is the core of the course. Then we covered a series of more specific and less technical topics: non globular proteins, disorder prediction, molecular dynamics, embeddings. Most important points:
+\vspace*{0.5em}
+\begin{itemize}
+    \item There are proteins which dont assume a fixed structure (IDP - intrinsically disordered). they are designed to be like that.
+    \item tandem repeats offer an extended platform for protein-protein interactions and they are used for designing new proteins with specific functions. Because you have a stable scaffold and you can make small mutations or indels and still get a protein that is able to folds and is stable.
+    \item that tandem repeat proteins fold from one end to the other.
+    \item we saw algorithms for detection of repeats in protein sequences (REPETITA, which exploits Atchley scales, RAPHAEL, and dot plots).
+    \item Embeddings.
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{chapters/01_introduction}
 \include{chapters/02_chemical_bonds}
