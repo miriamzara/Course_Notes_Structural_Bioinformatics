@@ -23,6 +23,7 @@
 \item{\textcolor{blue}{Describe the main steps involved in homology (comparative) modelling.} \done}
 \item{Why is sequence alignment the most critical step? \done}
 \item{Explain the difference between \textit{fragment-based} and \textit{restraint-based} raw model building. \done}
+\item {How are loops modelled? \done}
 \item{How are side chains modelled? \done}
 \item{How is model quality evaluated? \done}
 \item{What are the main limitations of comparative modelling? \done}
@@ -60,9 +61,17 @@ In comparative modelling, once the target-template alignment has been obtained, 
 
 \noindent In restraint-based building, instead of copying entire fragments, the template is used to derive geometrical restraints on the target structure, for example approximate atomic positions, distances, or angles. The model is then obtained by optimizing the structure so that these restraints are satisfied as well as possible. This produces a globally optimized structure and spreads errors over the whole model, but it does not necessarily preserve the exact local geometry of specific functional regions.
 
-\paragraph{How are side chains modelled?}
 
-Side chains are usually modelled after the backbone has been constructed. Their conformations are mainly determined by rotations around single bonds, described by the side-chain torsion angles $\chi$. These angles do not take arbitrary values, but tend to adopt a small number of preferred conformations called \textbf{rotamers}. For each torsion angle, the main preferred positions are:
+
+\paragraph{How are loops modelled?}
+Loops are typically the most variable regions. They can be modelled using either database methods (searching for similar loops in PDB) or with ab-initio methods (sampling conformations and scoring them). The major limitation of database
+methods is that not always there are loops of the right length and sequence in the database and that satisfy the geometrical constraints of raw model. Instead the problem of ab-initio methods is the computing time.
+
+
+
+\paragraph{How are side chains modelled?}
+Side chains are usually modelled after the backbone has been constructed. It is important to get them right, because even if the RMSD of the backbone is low, the precise positioning of side chains can be critical for the function of the protein, especially in active sites or binding pockets.
+Their conformations are mainly determined by rotations around single bonds, described by the side-chain torsion angles $\chi$. These angles do not take arbitrary values, but tend to adopt a small number of preferred conformations called \textbf{rotamers}. For each torsion angle, the main preferred positions are:
 gauche$^+$, around $60^\circ$, gauche$^-$, around $-60^\circ$, and trans, around $180^\circ$.
 \begin{center}
 \includegraphics[width=0.4\textwidth]{figures/rotameters.png}

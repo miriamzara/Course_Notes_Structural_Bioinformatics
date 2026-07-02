@@ -16,23 +16,129 @@
 \item Applications of structural alignments
 \end{enumerate}
 
+\subsection*{Possible exam questions:}
 
 \begin{enumerate}
-\item{What is RMSD?}
-\item{How is RMSD calculated?}
-\item{What is the difference between structural alignment and structural superposition?}
-\item{What is the Kabsch algorithm?}
+\item{What is RMSD? \done}
+\item{What is the difference between structural alignment and structural superposition? \done}
+\item{What is the Kabsch algorithm? \done}
+\vspace*{0.5cm}
+\item{What are the main algorithms for structural alignment? Briefly explain the logic of each.}
+\item {Why did the field evolve from SSAP and DALI to TM-align?}
+\item{Explain the scoring function of SSAP. \done}
+\item {Explain how TM-align works.}
+\item{How can you measure the quality of a structural alignment? \done}
 \item{Why are structural alignments more difficult than sequence alignments?}
 \item{What information is lost when using only C$\alpha$ atoms?}
 \item{What are equivalent residues in a structural alignment?}
 \item{Why can structure be more conserved than sequence?}
 \item{\textcolor{blue}{How can you measure the quality of a structural alignment?} \done}
-\item{What are the limitations of RMSD as a similarity measure?}
 \item{When is structural comparison useful in bioinformatics?}
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%
+\paragraph{What is the difference between structural alignment and structural superposition? \done}
+\begin{itemize}
+\item Structural \textit{alignment} is used to find the best correspondence between two \textit{different} protein structures (i.e. different sequences). The scope
+is often to infer evolutionary relationships between proteins that might have very little sequence similarity, but high structure similarity. There is no a-priori knowledge
+of which residues correspond to each other, and the goal is to find the best mapping between residues of the two structures.
+\item Structural \textit{superposition} is used to compare different conformations of the same protein (i.e. same sequence). For example, the same protein might be crystallized in different conditions, or it might be simulated in a molecular dynamics simulation, or
+there might exist different NMR models. In this case, the correspondence between residues is known, and the goal is to find the best rotation and translation that minimizes the distance between corresponding atoms.
+\end{itemize}
+\medskip \noindent
+\textcolor{blue}{Alignment= different proteins, corresponding residues unknown. Superposition= same protein, corresponding residues known.}
 
-\paragraph{How can you measure the quality of a structural alignment?}
+
+%%%%%%%%%%%%%%%%%%
+\paragraph{What is Kabsch algorithm? \done}
+It is the standard algorithm for structural superposition. It finds the optimal rotation and translation that minimizes the RMSD between two sets of corresponding points (atoms). 
+\textbf{How it works:} it computes the cross-covariance matrix between the two sets of points, then performs Singular Value Decomposition (SVD) to find the optimal rotation matrix. Instead, the translation is simply the difference between the barycenters of the two sets of points. 
+
+
+
+%%%%%%%%%%%%%%%%%%
+\paragraph{What are the main algorithms for structural alignment? Briefly explain the logic of each.}
+\noindent 
+
+\vspace*{0.5cm}
+\textbf{The two historical ones}:
+\begin{itemize}
+\item \textbf{SSAP}: is essentially the Needleman-Wunsch algorithm for sequence alignment. It finds the best alignment between the two set of residues with a dynamic programming approach. What
+sets it apart from Needleman-Wunsch is the scoring function, of course. Needleman-Wunsch uses PAM matrices, which quantify the penalty of substituting one aminoacid with another. 
+SSAP instead uses a scoring function based on the similarity of the local environments of the two residues.  
+\item \textbf{DALI:} it aims at finding common substructures between two proteins. It does so by comparing the distance matrices of the two structures, and finding the largest common submatrix. It can also 
+compute a global alignment by iteratively merging the local blocks, placing indels where necessary. It is framed as a combinatorial optimization problem, which means: 
+\end{itemize}
+\vspace*{0.5cm}
+\textbf{The state-of-the-art algorithms}:
+\begin{itemize}
+\item \textbf{CE:} stands for Combinatorial Extension. The name says it all: it is a combinatorial optimization problem. It starts from finding local alignments (called aligned fragment pairs, AFPs) of $8$ residues. Then it extends. 
+\item \textbf{TM-align:} uses its own score which is called TM-score. TM-align alternates between finding an alignment and finding the best superposition for that alignment, until both become stable. 
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{figures/alignment_methods_comparison.png}
+\end{center}
+
+\paragraph{Why did the field evolve from SSAP and DALI to TM-align?}
+SSAP, DALI and CE spend most of their effort trying to construct sophisticated structural descriptors.
+TM-align takes a simpler approach: Start from a rough alignment, superpose the structures, score residue pairs directly using the TM-score function, refine the alignment with dynamic programming, and iterate until convergence.
+
+
+
+\paragraph{Explain the scoring function of SSAP. \done}
+There are two versions, but the logic is the same. SSAP is looking for the best alignment between the two sets of residues.
+It must assign an alignment score to each possible pair of residues. The logic is that two residues 
+should be aligned if their local environments are similar.
+\medskip \newline \noindent
+First version: given residue $i$ in protein $A$ and residue $j$ in protein $B$, compute the vectors of distances from $i$ to all other residues in $A$, and from $j$ to all other residues in $B$. 
+Compute the single element score:
+$$
+s_{kl}=\frac{a}{|d^A_{ik}-d^B_{jl}|+b}
+$$
+where $d^A_{ik}$ is the distance between residue $i$ and residue $k$ in protein $A$, and $d^B_{jl}$ is the distance between residue $j$ and residue $l$ in protein $B$. The sum gives the score for the pair (i,j):
+
+$$
+S_{ij}=\sum_{k,l} s_{kl}
+$$
+This sum is done over a neighbourhood of the residues (k and l are residues that are close to i and j, respectively).
+\medskip \newline \noindent
+Second version: the main limitation of version $1$ is that it uses distances only, so it doesnt account for the orientation of the neighouring residues. So in version $2$,
+each residue is assigned a local reference frame and the vector of distance with its neigbours is computed.
+Then, the neighbourhoods in the two proteins are compared taking the euclidean distance between the two vectors. So the formula above simply change to:
+
+$$
+s_{kl}=\frac{a}{||\mathbf{v}^A_{ik}-\mathbf{v}^B_{jl}||^2+b}
+$$
+
+\medskip \noindent
+\textcolor{gray}{\textit{Remember: Dayoff matrices in sequence alignment}: In Needleman-Wunsch algorithms we used a reward of $+1$ for matches and a
+penalty of $-1$ for mismatches and indels. But we should actually adjust these numbers to get
+more realistic in estimating the evolutionary cost of modifications. Mismatches are not all the same. There are pairs of aminoacids that are more easily
+swapped than others. We should compute the probabilities of mutations from datasets
+of closely related sequences. This is done with the Dayoff matrices.}
+
+
+%%%%%%%%%%%%%%%%%%
+\paragraph{Explain how TM-align works.}
+TM-align is an iterative algorithm that alternates between two steps: finding the best alignment given a ""superposition"", and finding the best ""superposition"" given an alignment. It goes on until both become stable. I wrote
+superposition in quotes because it is not exactly a superposition, since the two proteins are different, but rotation and translation just as done in superposition.
+
+First stage: find rough candidate alignments. This can be done in three different ways:
+\begin{enumerate}
+\item Rough alignment: a DP with a scoring function that aims to align secondary structure elements. This produces one candidate alignment.
+\item Gapless threading: slide the smaller sequence on top of the larger one, with no gaps allowed. Compute TM-score, and keep the best alignment. This gives a second candidate alignment.
+\item Hybrid alignment: DP with a scoring that is 50\% first method and 50\% second method. This gives a third candidate alignment.
+\end{enumerate}
+\medskip \noindent
+Second stage: refine iteratively.
+Take one starting point alignment, superimpose (objective: minimize TM-score). Now, given the superposition,
+compute a similarity using the TM-score function, and use it as a scoring function in a DP to find a new alignment. Repeat until convergence.
+
+
+The iterative refinement is performed separately for each initial alignment. Then you take the best of the three final alignments. The reason for generating multiple starting alignments is that the refinement procedure is a local optimization. A local optimization can improve a solution, but it cannot necessarily escape from a very bad starting point.
+%%%%%%%%%%%%%%%%%%
+\paragraph{How can you measure the quality of a structural alignment? \done}
 here exist several metrics. Most common are the RMSD (Root Mean Squared Deviation)
 and the TM-score.
 RMSD simply measures the average square distance between corresponding aligned atoms
